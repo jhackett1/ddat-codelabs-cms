@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "build": "node build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,7 +13,9 @@
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "govuk_template_ejs": "^0.23.0",
-    "python3": "0.0.1"
+    "govuk_template_ejs": "^0.23.0"
+  },
+  "devDependencies": {
+    "fs-extra": "^5.0.0"
   }
 }
