@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Import and initialise routes
-const router = require('./routes/router')(express);
 const adminRouter = require('./routes/adminRouter')(express);
+const router = require('./routes/router')(express);
 app.use('/admin', adminRouter);
 app.use('/', router);
 

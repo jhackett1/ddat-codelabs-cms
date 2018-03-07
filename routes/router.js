@@ -19,6 +19,12 @@ let routes = function(express){
       res.send(`You are on resource ${req.params.lessonId}`)
     })
 
+  // Login form
+  router.route('/login')
+    .get((req, res)=>{
+      res.send(`You are on the login page`)
+    })
+
   return router;
 }
 
