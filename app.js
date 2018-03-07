@@ -7,13 +7,20 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes in here
+// Import and initialise routes
+const router = require('./routes/router')(express);
+const adminRouter = require('./routes/adminRouter')(express);
+app.use('/admin', adminRouter);
+app.use('/', router);
 
-
+// Listen
 let port = process.env.PORT || '4000';
 app.set('port', port);
-app.listen(port);
+app.listen(port, ()=>{
+  console.log(`Server listening on port ${port}.\nCtrl+C to quit.`)
+});
