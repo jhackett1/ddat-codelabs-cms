@@ -1,29 +1,23 @@
 let routes = function(express){
   let router = express.Router();
+  let controller = require('../controllers/controller');
+  let userController = require('../controllers/userController');
 
   // Module list view
   router.route('/')
-    .get((req, res)=>{
-      res.send('Module list view')
-    })
+    .get(controller.getModuleList)
 
   // Module detail view
   router.route('/module/:moduleId')
-    .get((req, res)=>{
-      res.send(`You are on module ${req.params.moduleId}`)
-    })
+    .get(controller.getModuleDetail)
 
   // Lesson detail view
   router.route('/module/:moduleId/lesson/:lessonId')
-    .get((req, res)=>{
-      res.send(`You are on resource ${req.params.lessonId}`)
-    })
+    .get(controller.getLessonDetail)
 
   // Login form
   router.route('/login')
-    .get((req, res)=>{
-      res.send(`You are on the login page`)
-    })
+    .get(userController.getLogin)
 
   return router;
 }

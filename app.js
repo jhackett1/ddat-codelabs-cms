@@ -1,6 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path')
+const path = require('path');
+const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+
+// Connect to DB and verify connection
+const sequelize = new Sequelize(process.env.DB_URI, {
+  "dialect": "postgres",
+  "ssl": true,
+  "dialectOptions": {
+      "ssl": true
+  }
+})
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 const app = express();
 

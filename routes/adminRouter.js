@@ -1,22 +1,17 @@
 let routes = function(express){
   let router = express.Router();
+  let adminController = require('../controllers/adminController');
 
   router.route('/')
-    .get((req, res)=>{
-      res.send('You are on the admin view')
-    })
+    .get(adminController.getModuleList)
 
   // Module detail view
   router.route('/module/:moduleId')
-    .get((req, res)=>{
-      res.send(`You are editing module ${req.params.moduleId}`)
-    })
+    .get(adminController.getModuleDetail)
 
   // Lesson detail view
   router.route('/module/:moduleId/lesson/:lessonId')
-    .get((req, res)=>{
-      res.send(`You are editing resource ${req.params.lessonId}`)
-    })
+    .get(adminController.getLessonDetail)
 
   return router;
 }
