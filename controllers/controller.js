@@ -9,7 +9,7 @@ let controller = {
       headerClass: false,
       homepageUrl: false,
       logoLinkTitle: false,
-      globalHeaderText: false,
+      globalHeaderText: "DDaT Codelabs",
       crownCopyrightMessage: false
     })
   },

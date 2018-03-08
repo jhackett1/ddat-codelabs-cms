@@ -1,25 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const Sequelize = require('sequelize');
-
-// Connect to DB and verify connection
-// const sequelize = new Sequelize(process.env.DB_URI, {
-//   "dialect": "postgres",
-//   "ssl": true,
-//   "dialectOptions": {
-//       "ssl": true
-//   }
-// })
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });
+const pg = require('pg');
 
 const app = express();
+
+// Connect to DB
+var pool = new pg.Pool({
+  connectionString: process.env.DB_URI,
+  ssl: true
+})
+pool.connect(function(err, client, done) {
+  if(err) return console.error(err);
+  console.log("DB connection successful.")
+  done()
+})
+
+// pool shutdown
+pool.end()
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

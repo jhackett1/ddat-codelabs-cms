@@ -15,8 +15,6 @@
     "express": "^4.16.2",
     "govuk_template_ejs": "^0.23.0",
     "pg": "^7.4.1",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^4.35.2",
     "simplemde": "^1.11.2"
   },
   "devDependencies": {
