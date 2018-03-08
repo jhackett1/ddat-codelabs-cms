@@ -1,6 +1,17 @@
 let controller = {
   getModuleList: (req, res)=>{
-    res.send('Module list view')
+    // res.send('Module list view')
+    res.render('moduleList', {
+      htmlLang: false,
+      govukTemplateAssetPath: "",
+      bodyClasses: false,
+      skipLinkMessage: false,
+      headerClass: false,
+      homepageUrl: false,
+      logoLinkTitle: false,
+      globalHeaderText: false,
+      crownCopyrightMessage: false
+    })
   },
   getModuleDetail: (req, res)=>{
     res.send(`You are on module ${req.params.moduleId}`)
