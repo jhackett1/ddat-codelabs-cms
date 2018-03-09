@@ -1,14 +1,19 @@
-// var mongoose = require('mongoose'),
-//   Schema = mongoose.Schema;
-//
-// var lessonModel = new Schema({
-//   number: {type: Number, required: true},
-//   title: {type: String, required: true},
-//   lessonType: {type: String, required: true},
-//   module: {type: Number},
-//   content: {type: String},
-//   difficulty: {type: String},
-//   externalLinks: {type: Array}
-// }, { versionKey: false });
-//
-// module.exports = mongoose.model('lesson', lessonModel);
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  var Lesson = sequelize.define('Lesson', {
+    number: DataTypes.INTEGER,
+    title: DataTypes.STRING,
+    type: DataTypes.STRING,
+    content: DataTypes.STRING,
+    difficulty: DataTypes.STRING,
+    externalLinks: DataTypes.ARRAY(DataTypes.STRING)
+  }, {});
+  Lesson.associate = function(models) {
+    // associations can be defined here
+    Lesson.belongsTo(models.Module, {
+      foreignKey: 'id',
+      onDelete: 'CASCADE',
+    })
+  };
+  return Lesson;
+};

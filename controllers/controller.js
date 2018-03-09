@@ -1,38 +1,37 @@
-const User = require('../models/user')
+const User = require('../models').User;
 
 let controller = {
   getModuleList: (req, res)=>{
 
+    // User.create({
+    //   id: 3543,
+    //   username: "fjkwl",
+    //   password: "gjkelw;"
+    // })
+    //   .then(user => console.log(user))
+    //   .catch(error => console.log(error));
 
-    User.create({
-      id: 3543,
-      username: "fjkwl",
-      password: "gjkelw;"
-    })
-      .then(user => console.log(user))
-      .catch(error => console.log(error));
 
+    User.findAll()
+      .then((result)=>{
+        console.log(result)
+        res.render('moduleList', {
+          htmlLang: false,
+          govukTemplateAssetPath: "",
+          bodyClasses: false,
+          skipLinkMessage: false,
+          headerClass: false,
+          homepageUrl: false,
+          logoLinkTitle: false,
+          globalHeaderText: "DDaT Codelabs",
+          crownCopyrightMessage: false,
+          data: result
+        })
 
-    // User.findAll()
-    //   .then((result)=>{
-    //     console.log(result)
-    //   })
-    //   .catch((err)=>[
-    //     console.log(err)
-    //   ])
-
-    // res.send('Module list view')
-    res.render('moduleList', {
-      htmlLang: false,
-      govukTemplateAssetPath: "",
-      bodyClasses: false,
-      skipLinkMessage: false,
-      headerClass: false,
-      homepageUrl: false,
-      logoLinkTitle: false,
-      globalHeaderText: "DDaT Codelabs",
-      crownCopyrightMessage: false
-    })
+      })
+      .catch((err)=>[
+        console.log(err)
+      ])
   },
   getModuleDetail: (req, res)=>{
     res.send(`You are on module ${req.params.moduleId}`)

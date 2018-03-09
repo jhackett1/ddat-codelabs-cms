@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const pg = require('pg');
 const logger = require('morgan');
-const db = require('./db')
 
 const app = express();
 
