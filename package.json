@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "node build.js",
+    "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,8 @@
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "govuk-elements-sass": "^3.1.2",
+    "govuk_frontend_toolkit": "^7.4.2",
     "govuk_template_ejs": "^0.23.0",
     "morgan": "^1.9.0",
     "pg": "^7.4.1",
@@ -22,6 +24,9 @@
     "simplemde": "^1.11.2"
   },
   "devDependencies": {
-    "fs-extra": "^5.0.0"
+    "fs-extra": "^5.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^3.1.0"
   }
 }

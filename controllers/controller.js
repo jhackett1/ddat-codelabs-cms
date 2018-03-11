@@ -30,7 +30,7 @@ let controller = {
 
       })
       .catch((err)=>[
-        console.log(err)
+        res.send(err)
       ])
   },
   getModuleDetail: (req, res)=>{
