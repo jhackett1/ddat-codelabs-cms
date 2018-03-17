@@ -11,27 +11,27 @@ let controller = {
     //   .then(user => console.log(user))
     //   .catch(error => console.log(error));
 
+    res.render('moduleList', {
+      htmlLang: false,
+      govukTemplateAssetPath: "",
+      bodyClasses: false,
+      skipLinkMessage: false,
+      headerClass: false,
+      homepageUrl: false,
+      logoLinkTitle: false,
+      globalHeaderText: "DDaT Codelabs",
+      crownCopyrightMessage: false
+    })
 
-    User.findAll()
-      .then((result)=>{
-        console.log(result)
-        res.render('moduleList', {
-          htmlLang: false,
-          govukTemplateAssetPath: "",
-          bodyClasses: false,
-          skipLinkMessage: false,
-          headerClass: false,
-          homepageUrl: false,
-          logoLinkTitle: false,
-          globalHeaderText: "DDaT Codelabs",
-          crownCopyrightMessage: false,
-          data: result
-        })
-
-      })
-      .catch((err)=>[
-        res.send(err)
-      ])
+    // User.findAll()
+    //   .then((result)=>{
+    //     console.log(result)
+    //
+    //
+    //   })
+    //   .catch((err)=>[
+    //     res.send(err)
+    //   ])
   },
   getModuleDetail: (req, res)=>{
     res.send(`You are on module ${req.params.moduleId}`)

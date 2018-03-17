@@ -18,6 +18,7 @@
     "govuk_frontend_toolkit": "^7.4.2",
     "govuk_template_ejs": "^0.23.0",
     "morgan": "^1.9.0",
+    "npm": "^5.7.1",
     "pg": "^7.4.1",
     "sequelize": "^4.35.2",
     "sequelize-cli": "^4.0.0",
@@ -27,6 +28,8 @@
     "fs-extra": "^5.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-css-url-adjuster": "^0.2.3",
     "gulp-sass": "^3.1.0"
   }
 }

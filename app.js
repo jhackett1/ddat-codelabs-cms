@@ -4,6 +4,7 @@ const path = require('path');
 const pg = require('pg');
 const logger = require('morgan');
 
+// Initialise express
 const app = express();
 
 // Middleware
