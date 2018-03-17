@@ -15,6 +15,10 @@ let routes = function(express){
   router.route('/module/:moduleId/lesson/:lessonId')
     .get(controller.getLessonDetail)
 
+  router.route('/feedback')
+    .get(controller.getFeedbackForm)
+    .post(controller.postFeedbackForm)
+
   // Login form
   router.route('/login')
     .get(userController.getLogin)

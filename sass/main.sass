@@ -1,0 +1,21 @@
+
+@function image-url($url)
+  @return url($url)
+
+@import "_govuk-elements.scss"
+
+main#content, .full-page-width-wrapper
+  @extend %site-width-container
+
+.grid-row
+  @extend %grid-row
+
+  .column-third
+    @include grid-column( 1/3 )
+
+  .column-two-thirds
+    @include grid-column( 2/3 )
+
+
+.hero-image
+  @extend %outdent-to-full-width

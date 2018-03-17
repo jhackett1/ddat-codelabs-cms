@@ -11,17 +11,7 @@ let controller = {
     //   .then(user => console.log(user))
     //   .catch(error => console.log(error));
 
-    res.render('moduleList', {
-      htmlLang: false,
-      govukTemplateAssetPath: "",
-      bodyClasses: false,
-      skipLinkMessage: false,
-      headerClass: false,
-      homepageUrl: false,
-      logoLinkTitle: false,
-      globalHeaderText: "DDaT Codelabs",
-      crownCopyrightMessage: false
-    })
+    res.render('index')
 
     // User.findAll()
     //   .then((result)=>{
@@ -38,6 +28,13 @@ let controller = {
   },
   getLessonDetail: (req, res)=>{
     res.send(`You are on resource ${req.params.lessonId}`)
+  },
+  getFeedbackForm: (req, res)=>{
+    res.render('feedback')
+  },
+  postFeedbackForm: (req, res)=>{
+    console.log(req.body)
+    res.send('Form submitted');
   }
 }
 module.exports = controller;

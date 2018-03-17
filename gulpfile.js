@@ -10,7 +10,7 @@ const path = require('path');
 
 // Compile ma sass for me and autoprefix it
 gulp.task('sass', function(){
-  return gulp.src('./public/*.sass')
+  return gulp.src('./sass/*.sass')
   .pipe(sass({
     includePaths: [
       'node_modules/govuk_frontend_toolkit/stylesheets', // 1
@@ -29,19 +29,18 @@ gulp.task('sass', function(){
 })
 
 gulp.task('default', function(){
-  gulp.watch('./public/*.sass', ['sass']);
+
+  // Watch & compile sass
+  gulp.start('sass');
+  gulp.watch('./sass/*.sass', ['sass']);
+
+  // Copy static assets from GOV.UK template
   fs.copy('./node_modules/govuk_template_ejs/assets', './public', function (err) {
     if (err) {
       console.error(err);
     } else {
-      console.log("Template files copied successfully.");
+      console.log("Template assets copied successfully.");
     }
   });
-  fs.copy('./node_modules/govuk_frontend_toolkit/images', './public/images', function (err) {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log("Images copied successfully.");
-    }
-  });
+
 })
