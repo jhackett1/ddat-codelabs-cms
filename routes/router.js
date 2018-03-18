@@ -2,6 +2,10 @@ let routes = function(express){
   let router = express.Router();
   let controller = require('../controllers/controller');
   let userController = require('../controllers/userController');
+  let pageController = require('../controllers/pageController');
+
+  // Inject menu data into all routes
+  router.use(pageController.getMenu)
 
   // Module list view
   router.route('/')
@@ -23,6 +27,10 @@ let routes = function(express){
   router.route('/login')
     .get(userController.getLogin)
     .post(userController.postLogin)
+
+  // Other pages
+  router.route('/:pageSlug')
+    .get(pageController.getPage)
 
   return router;
 }

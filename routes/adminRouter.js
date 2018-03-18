@@ -1,22 +1,45 @@
 let routes = function(express){
   let router = express.Router();
-  let adminController = require('../controllers/adminController');
+  let moduleController = require('../controllers/moduleController');
+  let pageController = require('../controllers/pageController');
 
+  // Middleware
+  router.use(function(req, res, next){
+    res.locals.loggedIn = true;
+    next()
+  })
+  // Inject menu data into all routes
+  router.use(pageController.getMenu)
+
+  // Dashboard
   router.route('/')
-    .get(adminController.getModuleList)
+    .get(moduleController.getModuleList)
 
-  // Module detail view
+  // Module editors
   router.route('/module/new')
-    .get(adminController.getNewModule)
-    .post(adminController.postNewModule)
+    .get(moduleController.getNewModule)
+    .post(moduleController.postNewModule)
   router.route('/module/:moduleId')
-    .get(adminController.getEditModule)
+    .get(moduleController.getEditModule)
+    .post(moduleController.postEditModule)
+  router.route('/module/:moduleId/delete')
+    .post(moduleController.deleteEditModule)
 
-  // Lesson detail view
-  router.route('/module/:moduleId/lesson/new')
-    .get(adminController.getNewLesson)
-  router.route('/module/:moduleId/lesson/:lessonId')
-    .get(adminController.getEditLesson)
+  // Lesson editors
+  // router.route('/module/:moduleId/lesson/new')
+  //   .get(moduleController.getNewLesson)
+  // router.route('/module/:moduleId/lesson/:lessonId')
+  //   .get(moduleController.getEditLesson)
+
+  // Page editors
+  router.route('/page/new')
+    .get(pageController.getNewPage)
+    .post(pageController.postNewPage)
+  router.route('/page/:pageId')
+    .get(pageController.getEditPage)
+    .post(pageController.postEditPage)
+  router.route('/page/:pageId/delete')
+    .post(pageController.deleteEditPage)
 
   return router;
 }

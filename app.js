@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan');
 
+
 // Initialise express
 const app = express();
 
@@ -16,7 +17,6 @@ app.locals.homepageUrl = "/",
 app.locals.logoLinkTitle = false,
 app.locals.globalHeaderText = "DDaT Codelabs",
 app.locals.crownCopyrightMessage = false
-
 
 // Middleware
 app.set('views', path.join(__dirname, 'views'));

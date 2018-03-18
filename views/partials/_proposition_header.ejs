@@ -3,10 +3,15 @@
     <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
     <nav id="proposition-menu">
       <ul id="proposition-links">
-        <li><a href="#">Set up</a></li>
-        <li><a href="#">Mentoring</a></li>
-        <li><a href="#">Why this exists</a></li>
+
+        <% menu.forEach(function(menuItem){ %>
+          <li><a href="/<%- menuItem.slug %>"><%= menuItem.title %></a></li>
+        <% }); %>
+
         <li><a href="/feedback">Feedback</a></li>
+        <% if(typeof loggedIn !== 'undefined' && loggedIn){ %>
+          <li><a href="/logout">Log out</a></li>i>
+        <% } %>
       </ul>
     </nav>
   </div>

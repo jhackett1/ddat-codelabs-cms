@@ -1,6 +1,8 @@
-<div class="phase-banner full-page-width-wrapper">
-  <p>
-    <strong class="phase-tag">ALPHA</strong>
-    <span>This is a new service – your <a href="/feedback">feedback</a> will help us to improve it.</span>
-  </p>
-</div>
+<% if(typeof loggedIn === 'undefined' || !loggedIn){ %>
+  <div class="phase-banner full-page-width-wrapper">
+    <p>
+      <strong class="phase-tag">ALPHA</strong>
+      <span>This is a new service – your <a href="/feedback">feedback</a> will help us to improve it.</span>
+    </p>
+  </div>
+<% } %>

@@ -43,4 +43,13 @@ gulp.task('default', function(){
     }
   });
 
+  // Copy assets for SimpleMDE editor
+  fs.copy('./node_modules/simplemde/dist/', './public', function (err) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("SimpleMDE CSS copied successfully.");
+    }
+  });
+
 })

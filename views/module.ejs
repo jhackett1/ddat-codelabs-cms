@@ -1,0 +1,25 @@
+<%- include('header.ejs') %>
+<main id="content">
+
+  <div class="breadcrumbs">
+    <ol>
+      <li class="">
+          <a href="/">DDaT Codelabs</a>
+      </li>
+      <li class=""><%= module.title %></li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge"><%= module.title %></h1>
+      <p class="lede"><%= module.description %></p>
+    </div>
+
+    <div class="column-one-third">
+    </div>
+
+  </div>
+</main>
+<%- include('footer.ejs') %>

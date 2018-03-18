@@ -7,7 +7,6 @@
       <h1 class="heading-xlarge">Dashboard</h1>
 
       <h2 class="heading-large">Modules</h2>
-
       <table class="list">
         <thead>
           <tr>
@@ -26,15 +25,54 @@
           <% }); %>
         </tbody>
       </table>
-
       <div class="form-group">
         <a class="button" href="/admin/module/new" role="button">Create new module</a>
       </div>
 
-      <h2 class="heading-large">Feedback</h2>
+      <h2 class="heading-large">Pages</h2>
+      <table class="list">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% pagesList.forEach(function(page){ %>
+            <tr>
+              <th scope="row"><a href="/admin/page/<%= page.id %>"><%= page.title %></a></th>
+              <%
+              if(page.content.length > 50) {
+                page.content = page.content.substring(0,49)+"...";
+              }
+              %>
+              <td><%= page.content %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <div class="form-group">
+        <a class="button" href="/admin/page/new" role="button">Create new page</a>
+      </div>
 
     </div>
-
   </div>
+
+  <h2 class="heading-large">Feedback</h2>
+  <div class="grid-row">
+    <div class="column-one-half">
+      <div class="data">
+        <span class="data-item bold-xxlarge"><%- allFeedback %></span>
+        <span class="data-item bold-xsmall">Submissions so far</span>
+      </div>
+    </div>
+    <div class="column-one-half">
+      <div class="data">
+        <span class="data-item bold-xxlarge"><%- recentFeedback %></span>
+        <span class="data-item bold-xsmall">Submissions in the last 7 days</span>
+      </div>
+    </div>
+  </div>
+
 </main>
 <%- include('../footer.ejs') %>

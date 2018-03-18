@@ -1,6 +1,19 @@
 <%- include('../header.ejs') %>
 <main id="content">
 
+  <div class="breadcrumbs" data-module="track-click">
+    <ol>
+      <li class="">
+          <a href="/admin">Dashboard</a>
+      </li>
+      <% if( mode === "edit" ){ %>
+        <li>Editing module</li>
+      <% } else { %>
+        <li>New module</li>
+      <% } %>
+    </ol>
+  </div>
+
   <div class="grid-row">
 
     <div class="column-full">
@@ -11,10 +24,15 @@
         <h1 class="heading-xlarge">Create a new module</h1>
       <% } %>
 
-      <form action="/admin/module/new" method="POST">
+      <% if(mode === "edit" && typeof module !== 'undefined'){ %>
+        <form action="/admin/module/<%- module.id %>" method="POST">
+      <% } else { %>
+        <form action="/admin/module/new" method="POST">
+      <% } %>
+
         <div class="form-group">
           <label class="form-label" for="title">Module title</label>
-          <input class="form-control" id="title" name="title" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.title %>" <% } %>>
+          <input class="form-control" id="title" name="title" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.title %>" <% } %> required>
         </div>
 
         <div class="form-group">
@@ -26,7 +44,7 @@
               For example, module 5 will appear after module 4.
             </span>
           </label>
-          <input class="form-control" id="number" name="number" type="number" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.number%>" <% } %>>
+          <input class="form-control" id="number" name="number" type="number" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.number%>" <% } %> required>
         </div>
 
         <div class="form-group">
@@ -41,19 +59,27 @@
 
         <div class="form-group">
           <label class="form-label" for="available-from">Available from</label>
-          <input class="form-control" id="available-from" name="available-from" type="date" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.availableFrom %>" <% } %>>
+          <input class="form-control" id="available-from" name="available-from" type="date" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.availableFrom %>" <% } %> required>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="available-to">Available to</label>
-          <input class="form-control" id="available-to" name="available-to" type="date" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.availableTo %>" <% } %>>
+          <input class="form-control" id="available-to" name="available-to" type="date" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.availableTo %>" <% } %> required>
         </div>
 
         <div class="form-group">
-          <input class="button" type="submit" value="Publish">
+          <input class="button" type="submit" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>
         </div>
 
       </form>
+
+      <% if( mode === "edit" ){ %>
+        <form action="/admin/module/<%- module.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to permenantly delete this module?');" >
+          <div class="form-group">
+            <input class="button button-danger" type="submit" value="Delete module">
+          </div>
+        </form>
+      <% } %>
 
 
     </div>
