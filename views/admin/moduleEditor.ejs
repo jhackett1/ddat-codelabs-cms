@@ -1,0 +1,58 @@
+<%- include('../header.ejs') %>
+<main id="content">
+
+  <div class="grid-row">
+
+    <div class="column-full">
+      <h1 class="heading-xlarge">Create a new module</h1>
+
+      <form action="/admin/module/new" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="title">Module title</label>
+          <input class="form-control" id="title" name="title">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="number">
+            Module order
+            <span class="form-hint">
+              Give a number to indicate when this module should be completed.
+              <br/>
+              For example, module 5 will appear after module 4.
+            </span>
+          </label>
+          <input class="form-control" id="number" name="number" type="number">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="description">
+            Module description
+            <span class="form-hint">
+              Summarise the content of this module in a sentence.
+            </span>
+          </label>
+          <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="available-from">Available from</label>
+          <input class="form-control" id="available-from" name="available-from" type="date">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="available-to">Available to</label>
+          <input class="form-control" id="available-to" name="available-to" type="date">
+        </div>
+
+        <div class="form-group">
+          <input class="button" type="submit" value="Publish">
+        </div>
+
+      </form>
+
+
+    </div>
+
+  </div>
+</main>
+<%- include('../footer.ejs') %>

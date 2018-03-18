@@ -8,7 +8,7 @@ const app = express();
 
 // Set app local variables
 app.locals.htmlLang = false,
-app.locals.govukTemplateAssetPath = "",
+app.locals.govukTemplateAssetPath = "/",
 app.locals.bodyClasses = false,
 app.locals.skipLinkMessage = false,
 app.locals.headerClass = "with-proposition",
@@ -16,6 +16,7 @@ app.locals.homepageUrl = "/",
 app.locals.logoLinkTitle = false,
 app.locals.globalHeaderText = "DDaT Codelabs",
 app.locals.crownCopyrightMessage = false
+
 
 // Middleware
 app.set('views', path.join(__dirname, 'views'));

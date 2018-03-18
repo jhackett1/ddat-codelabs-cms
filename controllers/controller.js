@@ -1,27 +1,9 @@
 const User = require('../models').User;
+const Feedback = require('../models').Feedback;
 
 let controller = {
   getModuleList: (req, res)=>{
-
-    // User.create({
-    //   id: 3543,
-    //   username: "fjkwl",
-    //   password: "gjkelw;"
-    // })
-    //   .then(user => console.log(user))
-    //   .catch(error => console.log(error));
-
     res.render('index')
-
-    // User.findAll()
-    //   .then((result)=>{
-    //     console.log(result)
-    //
-    //
-    //   })
-    //   .catch((err)=>[
-    //     res.send(err)
-    //   ])
   },
   getModuleDetail: (req, res)=>{
     res.send(`You are on module ${req.params.moduleId}`)
@@ -33,8 +15,17 @@ let controller = {
     res.render('feedback')
   },
   postFeedbackForm: (req, res)=>{
-    console.log(req.body)
-    res.send('Form submitted');
+
+    let newFeedback = {
+      experience: req.body.experience,
+      message: req.body.message
+    }
+
+    console.log(newFeedback)
+
+    Feedback.create(newFeedback)
+      .then(module => res.status(201).redirect('/'))
+      .catch(error => res.status(401).send(error));
   }
 }
 module.exports = controller;

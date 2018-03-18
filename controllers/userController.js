@@ -1,6 +1,6 @@
 let controller = {
   getLogin: (req, res)=>{
-    res.send('Login form')
+    res.render('login')
   }
 }
 module.exports = controller;
