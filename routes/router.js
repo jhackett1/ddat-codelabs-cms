@@ -22,6 +22,7 @@ let routes = function(express){
   // Login form
   router.route('/login')
     .get(userController.getLogin)
+    .post(userController.postLogin)
 
   return router;
 }

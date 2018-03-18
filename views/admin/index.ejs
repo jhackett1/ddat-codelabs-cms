@@ -4,22 +4,35 @@
   <div class="grid-row">
 
     <div class="column-full">
-      <h1 class="heading-xlarge">All modules</h1>
+      <h1 class="heading-xlarge">Dashboard</h1>
 
+      <h2 class="heading-large">Modules</h2>
 
+      <table class="list">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th class="numeric" scope="col">Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% modulesList.forEach(function(module){ %>
+            <tr>
+              <th scope="row"><a href="/admin/module/<%= module.id %>"><%= module.title %></a></th>
+              <td><%= module.description %></td>
+              <td class="numeric"><%= module.number %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
 
-      <ol class="task-list">
-        <% modulesList.forEach(function(module){ %>
-          <li>
-            <h2 class="task-list-section"><%= module.title %></h2>
-            <p><%= module.description %></p>
-          </li>
-        <% }); %>
-      </ol>
+      <div class="form-group">
+        <a class="button" href="/admin/module/new" role="button">Create new module</a>
+      </div>
 
+      <h2 class="heading-large">Feedback</h2>
 
-
-      <a class="button " href="/admin/module/new" role="button">Create new module</a>
     </div>
 
   </div>
