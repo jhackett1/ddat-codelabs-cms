@@ -19,7 +19,9 @@ let controller = {
   },
 
   getNewModule: (req, res)=>{
-    res.render('admin/moduleEditor')
+    res.render('admin/moduleEditor', {
+      mode: 'new'
+    })
   },
 
   postNewModule: (req, res)=>{
@@ -38,7 +40,14 @@ let controller = {
   },
 
   getEditModule: (req, res)=>{
-    res.render('admin/moduleEditor')
+    Module.findById(req.params.moduleId)
+      .then((result)=>{
+        res.render('admin/moduleEditor', {
+          mode: 'edit',
+          module: result
+        })
+      })
+      .catch(err => console.log(err))
   },
 
   getNewLesson: (req, res)=>{
