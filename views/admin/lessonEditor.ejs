@@ -1,0 +1,70 @@
+<%- include('../header.ejs') %>
+<main id="content">
+
+  <div class="breadcrumbs" data-lesson="track-click">
+    <ol>
+      <li class="">
+          <a href="/admin">Dashboard</a>
+      </li>
+      <% if( mode === "edit" ){ %>
+        <li>Editing lesson</li>
+      <% } else { %>
+        <li>New lesson</li>
+      <% } %>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+
+    <div class="column-full">
+
+      <% if( mode === "edit" ){ %>
+        <h1 class="heading-xlarge">Edit a lesson</h1>
+      <% } else { %>
+        <h1 class="heading-xlarge">Create a new lesson</h1>
+      <% } %>
+
+      <% if(mode === "edit" && typeof lesson !== 'undefined'){ %>
+        <form action="/admin/lesson/<%- lesson.id %>" method="POST">
+      <% } else { %>
+        <form action="/admin/lesson/new" method="POST">
+      <% } %>
+
+        <div class="form-group">
+          <label class="form-label" for="title">Lesson title</label>
+          <input class="form-control" id="title" name="title" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.title %>" <% } %> required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="content">
+            Content
+          </label>
+          <textarea class="form-control" name="content" rows="10"><% if(mode === "edit" && typeof lesson !== 'undefined'){ %> <%- lesson.content %> <% } %></textarea>
+        </div>
+
+        <div class="form-group">
+          <input class="button" type="submit" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>
+        </div>
+
+      </form>
+
+      <% if( mode === "edit" ){ %>
+        <form action="/admin/lesson/<%- lesson.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to permenantly delete this lesson?');" >
+          <div class="form-group">
+            <input class="button button-danger" type="submit" value="Delete lesson">
+          </div>
+        </form>
+      <% } %>
+
+
+    </div>
+
+  </div>
+</main>
+
+<script src="<%= govukTemplateAssetPath %>simplemde.min.js"></script>
+<script>
+var simplemde = new SimpleMDE();
+</script>
+
+<%- include('../footer.ejs') %>

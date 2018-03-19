@@ -2,6 +2,7 @@ let routes = function(express){
   let router = express.Router();
   let moduleController = require('../controllers/moduleController');
   let pageController = require('../controllers/pageController');
+  let lessonController = require('../controllers/lessonController');
 
   // Middleware
   router.use(function(req, res, next){
@@ -25,10 +26,9 @@ let routes = function(express){
   router.route('/module/:moduleId/delete')
     .post(moduleController.deleteEditModule)
 
-  // Lesson editors
-  // router.route('/module/:moduleId/lesson/new')
-  //   .get(moduleController.getNewLesson)
-  // router.route('/module/:moduleId/lesson/:lessonId')
+  router.route('/lesson/new')
+    .get(lessonController.getNewLesson)
+  // router.route('/lesson/:lessonId')
   //   .get(moduleController.getEditLesson)
 
   // Page editors

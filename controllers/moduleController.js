@@ -1,14 +1,16 @@
 const Module = require('../models').Module;
+const Lesson = require('../models').Lesson;
 const Feedback = require('../models').Feedback;
 const Page = require('../models').Page;
 
 let controller = {
   getModuleList: (req, res)=>{
     let modules = Module.findAll();
+    let lessons = Lesson.findAll();
     let pages = Page.findAll();
     let feedbacks = Feedback.findAll();
     // Wait for both promises to resolve
-    Promise.all([modules, pages, feedbacks])
+    Promise.all([modules, pages, feedbacks, lessons])
       .then(function(results){
         // Process and sort data
         let sortedModules = results[0].sort((a, b)=>{
@@ -28,6 +30,7 @@ let controller = {
         // Render dashboard
         res.render('admin/index', {
           modulesList: sortedModules,
+          lessonsList: results[3],
           pagesList: sortedPages,
           allFeedback: results[2].length,
           recentFeedback: recentFeedback.length
