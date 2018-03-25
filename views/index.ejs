@@ -22,6 +22,11 @@
             <li>
               <h3 class="heading-medium"><%= module.title %></h3>
               <p><%= module.description %></p>
+              <ol class="list list-number">
+                <% for (var i = 0; i < module.lessons.length; i++) { %>
+                  <li><a href="#"><%= module.lessons[i].title %></a></li>
+                <% } %>
+              </ol>
             </li>
           <% }) %>
         </ol>

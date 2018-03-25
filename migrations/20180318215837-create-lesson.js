@@ -33,7 +33,16 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      moduleId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Modules',
+          key: 'id',
+          as: 'moduleId',
+        },
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

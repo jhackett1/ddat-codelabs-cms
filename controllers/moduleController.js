@@ -6,7 +6,12 @@ const Page = require('../models').Page;
 let controller = {
   getModuleList: (req, res)=>{
     let modules = Module.findAll();
-    let lessons = Lesson.findAll();
+    let lessons = Lesson.findAll({
+      include: [{
+        model: Module,
+        as: 'Module',
+      }]
+    });
     let pages = Page.findAll();
     let feedbacks = Feedback.findAll();
     // Wait for both promises to resolve
@@ -36,7 +41,7 @@ let controller = {
           recentFeedback: recentFeedback.length
         })
       })
-      .catch(err => res.send(err))
+      .catch(err => console.log(err))
   },
 
   getNewModule: (req, res)=>{

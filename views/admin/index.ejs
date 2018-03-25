@@ -41,9 +41,9 @@
         <tbody>
           <% lessonsList.forEach(function(lesson){ %>
             <tr>
-              <th scope="row"><a href="/admin/module/<%= module.id %>"><%= module.title %></a></th>
-              <td><%= lesson.module %></td>
-              <td class="numeric"><%= module.number %></td>
+              <th scope="row"><a href="/admin/lesson/<%= lesson.id %>"><%= lesson.title %></a></th>
+              <td><%= lesson.Module %></td>
+              <td class="numeric"><%= lesson.number %></td>
             </tr>
           <% }); %>
         </tbody>

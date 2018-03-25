@@ -28,8 +28,10 @@ let routes = function(express){
 
   router.route('/lesson/new')
     .get(lessonController.getNewLesson)
-  // router.route('/lesson/:lessonId')
-  //   .get(moduleController.getEditLesson)
+    .post(lessonController.postNewLesson)
+  router.route('/lesson/:lessonId')
+    .get(lessonController.getEditLesson)
+    .post(lessonController.postEditLesson)
 
   // Page editors
   router.route('/page/new')

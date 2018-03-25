@@ -36,6 +36,55 @@
         </div>
 
         <div class="form-group">
+          <label class="form-label" for="number">
+            Lesson order
+            <span class="form-hint">
+              Give a number to indicate when in the module this lesson should be completed.
+              <br/>
+              For example, lesson 5 will appear after lesson 4.
+            </span>
+          </label>
+          <input class="form-control" id="number" name="number" type="number" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.number%>" <% } %> required>
+        </div>
+
+        <div class="form-group">
+          <fieldset class="inline">
+            <legend>
+              <p class="form-label">Lesson type</p>
+            </legend>
+            <div class="multiple-choice">
+              <input id="lessonType-1" type="radio" name="lessonType" value="Standard" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Standard"){ %> checked <% } } %>>
+              <label for="lessonType-1">Standard</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="lessonType-2" type="radio" name="lessonType" value="Video" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Standard"){ %> checked <% } } %>>
+              <label for="lessonType-2">Video</label>
+            </div>
+          </fieldset>
+        </div>
+
+
+        <div class="form-group">
+          <fieldset class="inline">
+            <legend>
+              <p class="form-label">Difficulty</p>
+            </legend>
+            <div class="multiple-choice">
+              <input id="difficulty-1" type="radio" name="difficulty" value="S" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.difficulty === "S"){ %> checked <% } } %>>
+              <label for="difficulty-1">S</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="difficulty-1" type="radio" name="difficulty" value="M" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.difficulty === "M"){ %> checked <% } } %>>
+              <label for="difficulty-1">M</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="difficulty-1" type="radio" name="difficulty" value="L" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.difficulty === "L"){ %> checked <% } } %>>
+              <label for="difficulty-1">L</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-group">
           <label class="form-label" for="content">
             Content
           </label>
@@ -43,9 +92,13 @@
         </div>
 
         <div class="form-group">
-          <input class="button" type="submit" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>
+          <label class="form-label" for="externalLinks">External links</label>
+          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks %>" <% } %>>
         </div>
 
+        <div class="form-group">
+          <input class="button" type="submit" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>
+        </div>
       </form>
 
       <% if( mode === "edit" ){ %>

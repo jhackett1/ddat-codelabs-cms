@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   Lesson.associate = function(models) {
     // associations can be defined here
     Lesson.belongsTo(models.Module, {
-      foreignKey: 'id',
+      foreignKey: 'moduleId',
       onDelete: 'CASCADE',
     });
   };

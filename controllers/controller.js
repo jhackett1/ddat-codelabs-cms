@@ -1,11 +1,17 @@
 const Module = require('../models').Module;
 const User = require('../models').User;
 const Feedback = require('../models').Feedback;
+const Lesson = require('../models').Lesson;
 
 let controller = {
 
   getModuleList: (req, res)=>{
-    Module.findAll()
+    Module.findAll({
+      include: [{
+        model: Lesson,
+        as: 'lessons',
+      }]
+    })
       .then((results)=>{
         res.render('index', {
           modules: results
