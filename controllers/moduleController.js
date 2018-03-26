@@ -1,3 +1,5 @@
+const arraySort = require('array-sort');
+
 const Module = require('../models').Module;
 const Lesson = require('../models').Lesson;
 const Feedback = require('../models').Feedback;
@@ -17,6 +19,7 @@ let controller = {
     // Wait for both promises to resolve
     Promise.all([modules, pages, feedbacks, lessons])
       .then(function(results){
+
         // Process and sort data
         let sortedModules = results[0].sort((a, b)=>{
           return a.number > b.number
@@ -24,6 +27,9 @@ let controller = {
         let sortedPages = results[1].sort((a, b)=>{
           return a.title > b.title
         })
+        // Sort lessons by module order, then by lesson order
+        let sortedLessons = arraySort(results[3], ['Module.number', 'number'])
+
         // Pull out only feedback submissions from last 7 days
         let cutoff = new Date();
         cutoff.setDate(cutoff.getDate() - 7);
@@ -35,7 +41,7 @@ let controller = {
         // Render dashboard
         res.render('admin/index', {
           modulesList: sortedModules,
-          lessonsList: results[3],
+          lessonsList: sortedLessons,
           pagesList: sortedPages,
           allFeedback: results[2].length,
           recentFeedback: recentFeedback.length

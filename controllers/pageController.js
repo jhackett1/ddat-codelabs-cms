@@ -10,7 +10,6 @@ let controller = {
     Page.findOne({where: {slug: req.params.pageSlug}})
       .then((result)=>{
 
-
         res.render('page', {
           page: {
             id: result.id,

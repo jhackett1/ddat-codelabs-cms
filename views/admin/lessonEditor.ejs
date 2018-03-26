@@ -36,6 +36,16 @@
         </div>
 
         <div class="form-group">
+          <label class="form-label" for="moduleId">
+            Module ID
+            <span class="form-hint">
+              Give the ID of the module this lesson will belong to.
+            </span>
+          </label>
+          <input class="form-control" id="moduleId" name="moduleId" type="number" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.moduleId%>" <% } %> required>
+        </div>
+
+        <div class="form-group">
           <label class="form-label" for="number">
             Lesson order
             <span class="form-hint">
@@ -57,7 +67,7 @@
               <label for="lessonType-1">Standard</label>
             </div>
             <div class="multiple-choice">
-              <input id="lessonType-2" type="radio" name="lessonType" value="Video" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Standard"){ %> checked <% } } %>>
+              <input id="lessonType-2" type="radio" name="lessonType" value="Video" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Video"){ %> checked <% } } %>>
               <label for="lessonType-2">Video</label>
             </div>
           </fieldset>
@@ -88,12 +98,12 @@
           <label class="form-label" for="content">
             Content
           </label>
-          <textarea class="form-control" name="content" rows="10"><% if(mode === "edit" && typeof lesson !== 'undefined'){ %> <%- lesson.content %> <% } %></textarea>
+          <textarea class="form-control" name="content" rows="10"><% if(mode === "edit" && typeof lesson !== 'undefined'){ %><%- lesson.content %><% } %></textarea>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="externalLinks">External links</label>
-          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks %>" <% } %>>
+          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[0] %>" <% } %>>
         </div>
 
         <div class="form-group">

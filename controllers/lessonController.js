@@ -18,13 +18,18 @@ let controller = {
       content: req.body.content,
       lessonType: req.body.lessonType,
       difficulty: req.body.difficulty,
-      externalLinks: req.body.externalLinks,
-      moduleId: 2
+      moduleId: req.body.moduleId,
+      externalLinks: []
     }
+
+    // Push links into the ARRAY
+    // TODO: This is awful. fix it at once
+    newLesson.externalLinks.push(req.body.externalLinks)
+
     // Save new module to DB
     Lesson.create(newLesson)
       .then(module => res.status(201).redirect('/admin'))
-      .catch(error => res.status(401).send(error));
+      .catch(error => console.log(error));
   },
 
   getEditLesson: (req, res)=>{
@@ -46,9 +51,10 @@ let controller = {
       difficulty: req.body.difficulty,
       lessonType: req.body.lessonType,
       content: req.body.content,
+      moduleId: req.body.moduleId,
       externalLinks: []
     }
-    
+
     // Push links into the ARRAY
     // TODO: This is awful. fix it at once
     updatedLesson.externalLinks.push(req.body.externalLinks)
@@ -57,10 +63,20 @@ let controller = {
       .then((result)=>{
         result.updateAttributes(updatedLesson)
           .then(lesson => res.status(200).redirect('/admin'))
-          .catch(error => console.log(error));
+          .catch(error => res.status(401).send(error));
       })
       .catch(err => console.log(err))
   },
+
+  deleteEditLesson: (req, res)=>{
+    Lesson.findById(req.params.lessonId)
+      .then((result)=>{
+        result.destroy()
+          .then(module => res.status(200).redirect('/admin'))
+          .catch(error => res.status(401).send(error));
+      })
+      .catch(err => console.log(err))
+  }
 
 }
 module.exports = controller;

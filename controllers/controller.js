@@ -9,15 +9,16 @@ let controller = {
     Module.findAll({
       include: [{
         model: Lesson,
-        as: 'lessons',
-      }]
+        as: 'lessons'
+      }],
+      order: ['number']
     })
       .then((results)=>{
         res.render('index', {
           modules: results
         })
       })
-      .catch(err=>res.status(401).send(err))
+      .catch(err=>console.log(err))
   },
 
   getModuleDetail: (req, res)=>{

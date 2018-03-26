@@ -32,6 +32,8 @@ let routes = function(express){
   router.route('/lesson/:lessonId')
     .get(lessonController.getEditLesson)
     .post(lessonController.postEditLesson)
+  router.route('/lesson/:lessonId/delete')
+    .post(lessonController.deleteEditLesson)
 
   // Page editors
   router.route('/page/new')
