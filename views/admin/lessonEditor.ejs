@@ -37,13 +37,21 @@
 
         <div class="form-group">
           <label class="form-label" for="moduleId">
-            Module ID
+            Module
             <span class="form-hint">
-              Give the ID of the module this lesson will belong to.
+              Give the module this lesson will belong to.
             </span>
           </label>
-          <input class="form-control" id="moduleId" name="moduleId" type="number" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.moduleId%>" <% } %> required>
+          <select class="form-control" id="moduleId" name="moduleId" required>
+            <% for (var i = 0; i < modules.length; i++) { %>
+              <option value="<%= modules[i].id %>" <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(modules[i].id === lesson.moduleId){ %>selected<%} } %> ><%= modules[i].title %></option>
+            <% }%>
+          </select>
+
         </div>
+
+
+
 
         <div class="form-group">
           <label class="form-label" for="number">
@@ -106,14 +114,14 @@
           <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[0] %>" <% } %>>
         </div>
 
-        <div class="form-group">
+        <div class="form-group inline">
           <input class="button" type="submit" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>
         </div>
       </form>
 
       <% if( mode === "edit" ){ %>
         <form action="/admin/lesson/<%- lesson.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to permenantly delete this lesson?');" >
-          <div class="form-group">
+          <div class="form-group inline">
             <input class="button button-danger" type="submit" value="Delete lesson">
           </div>
         </form>

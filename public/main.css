@@ -2286,3 +2286,15 @@ input[type=number] {
   border: 2px solid #0b0c0c;
   border-radius: 0px;
 }
+
+form {
+  display: inline;
+}
+
+.form-group.inline {
+  display: inline-block;
+}
+
+.form-group.inline input.button {
+  display: inline-block;
+}

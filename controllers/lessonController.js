@@ -1,13 +1,19 @@
 const markdown = require("markdown").markdown;
 
+const Module = require('../models').Module;
 const Lesson = require('../models').Lesson;
 
 let controller = {
 
   getNewLesson: (req, res)=>{
-    res.render('admin/lessonEditor', {
-      mode: 'new'
-    })
+    Module.findAll()
+      .then((results)=>{
+        res.render('admin/lessonEditor', {
+          mode: 'new',
+          modules: results
+        })
+      })
+      .catch((err)=>{res.send(err)})
   },
 
   postNewLesson: (req, res)=>{
@@ -33,11 +39,14 @@ let controller = {
   },
 
   getEditLesson: (req, res)=>{
-    Lesson.findById(req.params.lessonId)
-      .then((result)=>{
+    let modules = Module.findAll();
+    let lesson = Lesson.findById(req.params.lessonId);
+    Promise.all([lesson, modules])
+      .then((results)=>{
         res.render('admin/lessonEditor', {
           mode: 'edit',
-          lesson: result
+          lesson: results[0],
+          modules: results[1]
         })
       })
       .catch(err => console.log(err))

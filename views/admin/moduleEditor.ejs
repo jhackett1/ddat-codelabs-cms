@@ -67,7 +67,7 @@
           <input class="form-control" id="available-to" name="available-to" type="date" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="<%- module.availableTo %>" <% } %> required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group inline">
           <input class="button" type="submit" <% if(mode === "edit" && typeof module !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>
         </div>
 
@@ -75,7 +75,7 @@
 
       <% if( mode === "edit" ){ %>
         <form action="/admin/module/<%- module.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to permenantly delete this module?');" >
-          <div class="form-group">
+          <div class="form-group inline">
             <input class="button button-danger" type="submit" value="Delete module">
           </div>
         </form>
