@@ -30,6 +30,10 @@ let routes = function(express){
     .get(userController.getLogin)
     .post(userController.postLogin)
 
+  // Registration
+  router.route('/register')
+    .post(userController.createUser)
+
   // Other pages
   router.route('/:pageSlug')
     .get(pageController.getPage)
