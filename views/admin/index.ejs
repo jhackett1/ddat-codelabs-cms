@@ -18,7 +18,7 @@
         <tbody>
           <% modulesList.forEach(function(module){ %>
             <tr>
-              <th scope="row"><a href="/admin/module/<%= module.id %>"><%= module.title %></a></th>
+              <th scope="row"><a href="/admin/module/<%= module.number %>"><%= module.title %></a></th>
               <td><%= module.description %></td>
               <td class="numeric"><%= module.number %></td>
             </tr>
@@ -35,13 +35,13 @@
           <tr>
             <th scope="col">Title</th>
             <th scope="col">Module</th>
-            <th class="numeric" scope="col">Order</th>
+            <th class="numeric" scope="col">Order in module</th>
           </tr>
         </thead>
         <tbody>
           <% lessonsList.forEach(function(lesson){ %>
             <tr>
-              <th scope="row"><a href="/admin/lesson/<%= lesson.id %>"><%= lesson.title %></a></th>
+              <th scope="row"><a href="/admin/module/<%= lesson.Module.number %>/lesson/<%= lesson.number %>"><%= lesson.title %></a></th>
               <td><%= lesson.Module.title %></td>
               <td class="numeric"><%= lesson.number %></td>
             </tr>

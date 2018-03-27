@@ -19,10 +19,15 @@ let controller = {
     // Wait for both promises to resolve
     Promise.all([modules, pages, feedbacks, lessons])
       .then(function(results){
-        // Process and sort data
-        let sortedModules = results[0].sort((a, b)=>{
-          return a.number > b.number
-        })
+
+        for (var i = 0; i < results[0].length; i++) {
+          console.log(results[0][i].number, typeof(results[0][i].number))
+        }
+
+        let sortedModules = arraySort(results[0], ['number'])
+
+
+
         let sortedPages = results[1].sort((a, b)=>{
           return a.title > b.title
         })
@@ -70,8 +75,11 @@ let controller = {
   },
 
   getEditModule: (req, res)=>{
-    Module.findById(req.params.moduleId)
+    Module.findOne({where: {number: req.params.moduleNumber}})
       .then((result)=>{
+
+        console.log(result.number, typeof(result.number))
+
         res.render('admin/moduleEditor', {
           mode: 'edit',
           module: result
@@ -89,7 +97,7 @@ let controller = {
       availableFrom: req.body['available-from'],
       availableTo: req.body['available-to']
     }
-    Module.findById(req.params.moduleId)
+    Module.findOne({where: {number: req.params.moduleNumber}})
       .then((result)=>{
         result.updateAttributes(updatedModule)
           .then(module => res.status(200).redirect('/admin'))
@@ -99,7 +107,7 @@ let controller = {
   },
 
   deleteEditModule: (req, res)=>{
-    Module.findById(req.params.moduleId)
+    Module.findOne({where: {number: req.params.moduleNumber}})
       .then((result)=>{
         result.destroy()
           .then(module => res.status(200).redirect('/admin'))

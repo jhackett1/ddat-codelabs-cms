@@ -22,7 +22,7 @@ let controller = {
   },
 
   getModuleDetail: (req, res)=>{
-    Module.findById(req.params.moduleId)
+    Module.findOne({where: {number: req.params.moduleNumber}})
       .then((result)=>{
         res.render('module', {
           module: result
@@ -32,7 +32,7 @@ let controller = {
   },
 
   getLessonDetail: (req, res)=>{
-    res.send(`You are on resource ${req.params.lessonId}`)
+    res.send(`You are on resource ${req.params.lessonNumber} of module ${req.params.moduleNumber}`)
   },
 
   getFeedbackForm: (req, res)=>{

@@ -39,13 +39,27 @@ let controller = {
   },
 
   getEditLesson: (req, res)=>{
-    let modules = Module.findAll();
-    let lesson = Lesson.findById(req.params.lessonId);
-    Promise.all([lesson, modules])
+    let modules = Module.findAll()
+    let module = Module.findOne({
+      include: [{
+        model: Lesson,
+        as: 'lessons'
+      }],
+      where: {
+        number: req.params.moduleNumber
+      }
+    })
+    Promise.all([module, modules])
       .then((results)=>{
+        let lessons = results[0].lessons.filter((lesson)=>{
+          if(lesson.number === parseInt(req.params.lessonNumber)){
+            console.log("Match found")
+            return true;
+          }
+        })
         res.render('admin/lessonEditor', {
           mode: 'edit',
-          lesson: results[0],
+          lesson: lessons[0],
           modules: results[1]
         })
       })

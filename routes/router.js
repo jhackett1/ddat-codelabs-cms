@@ -4,6 +4,7 @@ let routes = function(express){
   let userController = require('../controllers/userController');
   let pageController = require('../controllers/pageController');
 
+  // Middleware
   // Inject menu data into all routes
   router.use(pageController.getMenu)
 
@@ -12,13 +13,14 @@ let routes = function(express){
     .get(controller.getModuleList)
 
   // Module detail view
-  router.route('/module/:moduleId')
+  router.route('/module/:moduleNumber')
     .get(controller.getModuleDetail)
 
   // Lesson detail view
-  router.route('/module/:moduleId/lesson/:lessonId')
+  router.route('/module/:moduleNumber/lesson/:lessonNumber')
     .get(controller.getLessonDetail)
 
+  // Feedback form
   router.route('/feedback')
     .get(controller.getFeedbackForm)
     .post(controller.postFeedbackForm)

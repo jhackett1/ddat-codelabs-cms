@@ -25,7 +25,7 @@
       <% } %>
 
       <% if(mode === "edit" && typeof lesson !== 'undefined'){ %>
-        <form action="/admin/lesson/<%- lesson.id %>" method="POST">
+        <form action="/admin/lesson/<%- lesson.id %>/submit" method="POST">
       <% } else { %>
         <form action="/admin/lesson/new" method="POST">
       <% } %>
