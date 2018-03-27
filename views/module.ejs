@@ -15,6 +15,13 @@
     <div class="column-two-thirds">
       <h1 class="heading-xlarge"><%= module.title %></h1>
       <p class="lede"><%= module.description %></p>
+
+      <ol class="list">
+        <% for (var i = 0; i < module.lessons.length; i++) { %>
+          <li><%= module.lessons[i].number %>. <a href="/module/<%= module.number %>/lesson/<%= module.lessons[i].number %>"><%= module.lessons[i].title %></a></li>
+        <% } %>
+      </ol>
+
     </div>
 
     <div class="column-one-third">

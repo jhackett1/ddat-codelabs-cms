@@ -20,12 +20,7 @@ let controller = {
     Promise.all([modules, pages, feedbacks, lessons])
       .then(function(results){
 
-        for (var i = 0; i < results[0].length; i++) {
-          console.log(results[0][i].number, typeof(results[0][i].number))
-        }
-
         let sortedModules = arraySort(results[0], ['number'])
-
 
         let sortedPages = results[1].sort((a, b)=>{
           return a.title > b.title
@@ -77,9 +72,6 @@ let controller = {
   getEditModule: (req, res)=>{
     Module.findOne({where: {number: req.params.moduleNumber}})
       .then((result)=>{
-
-        console.log(result.number, typeof(result.number))
-
         res.render('admin/moduleEditor', {
           mode: 'edit',
           module: result

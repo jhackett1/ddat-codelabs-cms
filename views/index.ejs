@@ -6,7 +6,6 @@
     <div class="column-two-thirds">
       <h1 class="heading-xlarge">Learn to code in six months</h1>
       <p class="lede">DDaT Codelabs are an easy way to practice using the technology involved in building government services.</p>
-      <p>Over six modules of exercises and projects, you'll learn the essentials of modern web development, with no prior knowledge assumed. </p>
       <p><a href="/why-this-exists">Read more about why Codelabs exists</a></p>
       <h2 class="heading-large">All modules</h2>
       <p>A new module is released at the start of each month, starting in September 2017. Volunteer mentors <a href="/mentoring">can help you</a> if you get stuck.</p>
@@ -22,9 +21,14 @@
             <li>
               <h3 class="heading-medium"><%= module.title %></h3>
               <p><%= module.description %></p>
-              <ol class="list list-number">
-                <% for (var i = 0; i < module.lessons.length; i++) { %>
-                  <li><a href="/module/<%= module.number %>/lesson/<%= module.lessons[i].number %>"><%= module.lessons[i].title %></a></li>
+              <ol class="list">
+                <%
+                  let sortedLessons = module.lessons.sort((a,b)=>{
+                    return a.number>b.number;
+                  })
+                %>
+                <% for (var i = 0; i < sortedLessons.length; i++) { %>
+                  <li><%= sortedLessons[i].number %>. <a href="/module/<%= module.number %>/lesson/<%= module.lessons[i].number %>"><%= module.lessons[i].title %></a></li>
                 <% } %>
               </ol>
             </li>

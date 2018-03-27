@@ -4,9 +4,9 @@ const Module = require('../models').Module;
 const Lesson = require('../models').Lesson;
 
 let controller = {
-  
+
   getNewLesson: (req, res)=>{
-    Module.findAll()
+    Module.findAll({order: ['number']})
       .then((results)=>{
         res.render('admin/lessonEditor', {
           mode: 'new',
@@ -17,6 +17,9 @@ let controller = {
   },
 
   postNewLesson: (req, res)=>{
+
+    console.log("\n\n\nSUBMITTED FORM DATA:\n================\n\n", req.body)
+
     // Process user-supplied form data
     let newLesson = {
       title: req.body.title,
@@ -47,7 +50,8 @@ let controller = {
       }],
       where: {
         number: req.params.moduleNumber
-      }
+      },
+      order: ['number']
     })
     Promise.all([module, modules])
       .then((results)=>{
@@ -75,12 +79,10 @@ let controller = {
       lessonType: req.body.lessonType,
       content: req.body.content,
       moduleId: req.body.moduleId,
-      externalLinks: []
+      externalLinks: req.body.externalLinks
     }
 
-    // Push links into the ARRAY
-    // TODO: This is awful. fix it at once
-    updatedLesson.externalLinks.push(req.body.externalLinks)
+        console.log("\n\n\nSUBMITTED FORM DATA:\n================\n\n", req.body)
 
     Lesson.findById(req.params.lessonId)
       .then((result)=>{

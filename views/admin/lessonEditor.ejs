@@ -113,6 +113,12 @@
           <label class="form-label" for="externalLinks">External links</label>
           <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[0] %>" <% } %>>
         </div>
+        <div class="form-group">
+          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[1] %>" <% } %>>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[2] %>" <% } %>>
+        </div>
 
         <div class="form-group inline">
           <input class="button" type="submit" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>

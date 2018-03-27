@@ -21,8 +21,15 @@ let controller = {
       .catch(err=>console.log(err))
   },
 
+
   getModuleDetail: (req, res)=>{
-    Module.findOne({where: {number: req.params.moduleNumber}})
+    Module.findOne({
+      include: [{
+        model: Lesson,
+        as: 'lessons'
+      }],
+      where: {number: req.params.moduleNumber}
+    })
       .then((result)=>{
         res.render('module', {
           module: result
@@ -45,7 +52,6 @@ let controller = {
         .then((result)=>{
           let lessons = result.lessons.filter((lesson)=>{
             if(lesson.number === parseInt(req.params.lessonNumber)){
-              console.log("Match found")
               return true;
             }
           })
