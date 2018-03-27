@@ -35,8 +35,8 @@ let routes = function(express){
     .get(userController.logout)
 
   // Registration
-  router.route('/register')
-    .post(userController.createUser)
+  // router.route('/register')
+  //   .post(userController.createUser)
 
   // Other pages
   router.route('/:pageSlug')
