@@ -4,7 +4,7 @@ const Module = require('../models').Module;
 const Lesson = require('../models').Lesson;
 
 let controller = {
-
+  
   getNewLesson: (req, res)=>{
     Module.findAll()
       .then((results)=>{

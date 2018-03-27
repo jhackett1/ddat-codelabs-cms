@@ -32,7 +32,29 @@ let controller = {
   },
 
   getLessonDetail: (req, res)=>{
-    res.send(`You are on resource ${req.params.lessonNumber} of module ${req.params.moduleNumber}`)
+
+      Module.findOne({
+        include: [{
+          model: Lesson,
+          as: 'lessons'
+        }],
+        where: {
+          number: req.params.moduleNumber
+        }
+      })
+        .then((result)=>{
+          let lessons = result.lessons.filter((lesson)=>{
+            if(lesson.number === parseInt(req.params.lessonNumber)){
+              console.log("Match found")
+              return true;
+            }
+          })
+          res.render('lesson', {
+            lesson: lessons[0],
+            module: result
+          })
+        })
+        .catch(err => console.log(err))
   },
 
   getFeedbackForm: (req, res)=>{

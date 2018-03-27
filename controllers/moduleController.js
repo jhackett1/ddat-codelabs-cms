@@ -27,7 +27,6 @@ let controller = {
         let sortedModules = arraySort(results[0], ['number'])
 
 
-
         let sortedPages = results[1].sort((a, b)=>{
           return a.title > b.title
         })
@@ -46,6 +45,7 @@ let controller = {
           modulesList: sortedModules,
           lessonsList: sortedLessons,
           pagesList: sortedPages,
+          feedbackList: recentFeedback,
           allFeedback: results[2].length,
           recentFeedback: recentFeedback.length
         })

@@ -82,6 +82,22 @@
   </div>
 
   <h2 class="heading-large">Feedback</h2>
+  <table class="list">
+    <thead>
+      <tr>
+        <th scope="col">Experience</th>
+        <th scope="col">Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% feedbackList.forEach(function(feedback){ %>
+        <tr>
+          <th scope="row"><%= feedback.experience %></th>
+          <td><%= feedback.message %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
   <div class="grid-row">
     <div class="column-one-half">
       <div class="data">
@@ -95,7 +111,7 @@
         <span class="data-item bold-xsmall">Submissions in the last 7 days</span>
       </div>
     </div>
-  </div>
+  </div>  
 
 </main>
 <%- include('../footer.ejs') %>

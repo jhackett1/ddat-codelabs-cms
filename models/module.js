@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var Module = sequelize.define('Module', {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    number: DataTypes.STRING,
+    number: DataTypes.INTEGER,
     availableFrom: DataTypes.STRING,
     availableTo: DataTypes.STRING
   }, {});
