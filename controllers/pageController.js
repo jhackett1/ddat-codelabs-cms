@@ -1,5 +1,7 @@
 const slugs = require("slugs");
-const markdown = require("markdown").markdown;
+const md = require('markdown-it')({
+  html: true
+});
 
 const Page = require('../models').Page;
 
@@ -15,7 +17,7 @@ let controller = {
             id: result.id,
             title: result.title,
             slug: result.slug,
-            content: markdown.toHTML(result.content)
+            content: md.render(result.content)
           }
         })
       })

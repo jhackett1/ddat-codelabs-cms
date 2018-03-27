@@ -1,5 +1,3 @@
-const markdown = require("markdown").markdown;
-
 const Module = require('../models').Module;
 const Lesson = require('../models').Lesson;
 
@@ -17,9 +15,6 @@ let controller = {
   },
 
   postNewLesson: (req, res)=>{
-
-    console.log("\n\n\nSUBMITTED FORM DATA:\n================\n\n", req.body)
-
     // Process user-supplied form data
     let newLesson = {
       title: req.body.title,
@@ -28,13 +23,8 @@ let controller = {
       lessonType: req.body.lessonType,
       difficulty: req.body.difficulty,
       moduleId: req.body.moduleId,
-      externalLinks: []
+      externalLinks: req.body.externalLinks
     }
-
-    // Push links into the ARRAY
-    // TODO: This is awful. fix it at once
-    newLesson.externalLinks.push(req.body.externalLinks)
-
     // Save new module to DB
     Lesson.create(newLesson)
       .then(module => res.status(201).redirect('/admin'))
@@ -57,7 +47,6 @@ let controller = {
       .then((results)=>{
         let lessons = results[0].lessons.filter((lesson)=>{
           if(lesson.number === parseInt(req.params.lessonNumber)){
-            console.log("Match found")
             return true;
           }
         })
@@ -81,9 +70,6 @@ let controller = {
       moduleId: req.body.moduleId,
       externalLinks: req.body.externalLinks
     }
-
-        console.log("\n\n\nSUBMITTED FORM DATA:\n================\n\n", req.body)
-
     Lesson.findById(req.params.lessonId)
       .then((result)=>{
         result.updateAttributes(updatedLesson)
