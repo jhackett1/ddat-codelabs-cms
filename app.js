@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan');
-
+const session = require('express-session');
 
 // Initialise express
 const app = express();
@@ -21,7 +21,12 @@ app.locals.crownCopyrightMessage = false
 // Middleware
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-// app.use(logger('dev'))
+app.use(logger('dev'))
+app.use(session({
+  secret: 'cohinkeydink',
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));

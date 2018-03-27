@@ -30,6 +30,10 @@ let routes = function(express){
     .get(userController.getLogin)
     .post(userController.postLogin)
 
+  // Logout button
+  router.route('/logout')
+    .get(userController.logout)
+
   // Registration
   router.route('/register')
     .post(userController.createUser)

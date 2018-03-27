@@ -4,11 +4,16 @@ let routes = function(express){
   let pageController = require('../controllers/pageController');
   let lessonController = require('../controllers/lessonController');
 
-  // Middleware
-  router.use(function(req, res, next){
-    res.locals.loggedIn = true;
-    next()
+  // Auth middleware
+  router.use(function(req, res, next) {
+    if (req.session.user) {
+      res.locals.loggedIn = true;
+      next()
+    } else {
+      res.redirect('/login')
+    }
   })
+
   // Inject menu data into all routes
   router.use(pageController.getMenu)
 
