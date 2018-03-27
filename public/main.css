@@ -2298,3 +2298,123 @@ form {
 .form-group.inline input.button {
   display: inline-block;
 }
+
+.lesson-content strong,
+.page-content strong {
+  font-weight: 700;
+}
+
+.lesson-content ul,
+.page-content ul {
+  list-style-type: disc;
+  margin: 25px 0px 25px 25px;
+}
+
+.lesson-content ol,
+.page-content ol {
+  list-style-type: decimal;
+  margin: 25px 0px 25px 25px;
+}
+
+.lesson-content em,
+.page-content em {
+  font-style: italic;
+}
+
+.lesson-content h1,
+.page-content h1 {
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 32px;
+  line-height: 1.09375;
+  font-weight: 700;
+}
+
+@media (min-width: 641px) {
+  .lesson-content h1,
+  .page-content h1 {
+    font-size: 48px;
+    line-height: 1.04167;
+  }
+}
+
+.lesson-content h2,
+.page-content h2 {
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 24px;
+  line-height: 1.04167;
+  font-weight: 700;
+}
+
+@media (min-width: 641px) {
+  .lesson-content h2,
+  .page-content h2 {
+    font-size: 36px;
+    line-height: 1.11111;
+  }
+}
+
+.lesson-content h3,
+.page-content h3 {
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 20px;
+  line-height: 1.11111;
+  font-weight: 700;
+}
+
+@media (min-width: 641px) {
+  .lesson-content h3,
+  .page-content h3 {
+    font-size: 27px;
+    line-height: 1.11111;
+  }
+}
+
+.lesson-content h4,
+.page-content h4 {
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+@media (min-width: 641px) {
+  .lesson-content h4,
+  .page-content h4 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+}
+
+.lesson-content h5,
+.page-content h5 {
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+@media (min-width: 641px) {
+  .lesson-content h5,
+  .page-content h5 {
+    font-size: 19px;
+    line-height: 1.31579;
+  }
+}
+
+.lesson-content blockquote,
+.page-content blockquote {
+  border-left-style: solid;
+  border-left-width: 10px;
+  border-color: #bfc1c3;
+  padding: 0.78947em;
+}

@@ -1,3 +1,5 @@
+const markdown = require("markdown").markdown;
+
 const Module = require('../models').Module;
 const User = require('../models').User;
 const Feedback = require('../models').Feedback;
@@ -55,8 +57,10 @@ let controller = {
               return true;
             }
           })
+          let lesson = lessons[0];
+          lesson.content = markdown.toHTML(lesson.content);
           res.render('lesson', {
-            lesson: lessons[0],
+            lesson: lesson,
             module: result
           })
         })

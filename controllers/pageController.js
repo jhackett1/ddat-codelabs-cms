@@ -75,7 +75,7 @@ let controller = {
       .then((result)=>{
         result.updateAttributes(updatedPage)
           .then(page => res.status(200).redirect('/admin'))
-          .catch(error => res.status(401).send(error));
+          .catch(error => console.log(error));
       })
       .catch(err => console.log(err))
   },

@@ -64,7 +64,9 @@
 
 <script src="<%= govukTemplateAssetPath %>simplemde.min.js"></script>
 <script>
-var simplemde = new SimpleMDE();
+var simplemde = new SimpleMDE({
+	toolbar: ["bold", "italic", "heading", "|", "code", "quote", "|", "unordered-list", "ordered-list", "|", "link", "image", "horizontal-rule", "|", "fullscreen", "guide"],
+});
 </script>
 
 <%- include('../footer.ejs') %>

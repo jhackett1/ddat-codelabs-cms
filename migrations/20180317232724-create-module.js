@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       number: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       availableFrom: {
         type: Sequelize.STRING

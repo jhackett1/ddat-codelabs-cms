@@ -62,7 +62,7 @@
               For example, lesson 5 will appear after lesson 4.
             </span>
           </label>
-          <input class="form-control" id="number" name="number" type="number" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.number%>" <% } %> required>
+          <input class="form-control" min="0" id="number" name="number" type="number" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.number%>" <% } %> required>
         </div>
 
         <div class="form-group">
@@ -141,7 +141,9 @@
 
 <script src="<%= govukTemplateAssetPath %>simplemde.min.js"></script>
 <script>
-var simplemde = new SimpleMDE();
+var simplemde = new SimpleMDE({
+	toolbar: ["bold", "italic", "heading", "|", "code", "quote", "|", "unordered-list", "ordered-list", "|", "link", "image", "horizontal-rule", "|", "fullscreen", "guide"],
+});
 </script>
 
 <%- include('../footer.ejs') %>

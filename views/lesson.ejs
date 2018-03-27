@@ -17,7 +17,9 @@
 
     <div class="column-two-thirds">
       <h1 class="heading-large"><%= lesson.number %>. <%= lesson.title %></h1>
-      <p><%= lesson.content %></p>
+      <div class="lesson-content">
+        <%- lesson.content %>
+      </div>
     </div>
 
     <div class="column-one-third">

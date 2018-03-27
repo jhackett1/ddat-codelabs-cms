@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Lesson = sequelize.define('Lesson', {
     title: DataTypes.STRING,
-    content: DataTypes.STRING,
+    content: DataTypes.TEXT,
     number: DataTypes.INTEGER,
     lessonType: DataTypes.STRING,
     difficulty: DataTypes.STRING,
