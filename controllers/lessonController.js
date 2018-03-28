@@ -60,6 +60,17 @@ let controller = {
   },
 
   postEditLesson: (req, res)=>{
+
+    console.log("\n\n\n", req.body.externalLinks, "\n\n\n");
+
+    for (var i = 0; i < req.body.externalLinks.length; i++) {
+      console.log(typeof(req.body.externalLinks[i]))
+    }
+
+    let filteredExternalLinks = req.body.externalLinks.filter(Boolean)
+
+    console.log(filteredExternalLinks)
+
     // Process user-supplied form data
     let updatedLesson = {
       title: req.body.title,
@@ -68,8 +79,11 @@ let controller = {
       lessonType: req.body.lessonType,
       content: req.body.content,
       moduleId: req.body.moduleId,
-      externalLinks: req.body.externalLinks
+      externalLinks: filteredExternalLinks
     }
+
+
+
     Lesson.findById(req.params.lessonId)
       .then((result)=>{
         result.updateAttributes(updatedLesson)

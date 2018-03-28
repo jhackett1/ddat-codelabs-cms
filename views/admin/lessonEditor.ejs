@@ -78,6 +78,10 @@
               <input id="lessonType-2" type="radio" name="lessonType" value="Video" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Video"){ %> checked <% } } %>>
               <label for="lessonType-2">Video</label>
             </div>
+            <div class="multiple-choice">
+              <input id="lessonType-3" type="radio" name="lessonType" value="Project task" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Project task"){ %> checked <% } } %>>
+              <label for="lessonType-3">Project task</label>
+            </div>
           </fieldset>
         </div>
 

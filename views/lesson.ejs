@@ -20,6 +20,19 @@
       <div class="lesson-content">
         <%- lesson.content %>
       </div>
+
+      <% if (lesson.externalLinks.length > 0) { %>
+        <h2 class="heading-medium">Additional resources</h2>
+        <ul class="list list-bullet">
+        <% for (var i = 0; i < lesson.externalLinks.length; i++) { %>
+          <li><%= lesson.externalLinks[i] %></li>
+        <% } %>
+        </ul>
+      <% } %>
+
+
+
+
     </div>
 
     <div class="column-one-third">
