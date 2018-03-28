@@ -19,8 +19,19 @@ let controller = {
       order: ['number']
     })
       .then((results)=>{
+
+        // Only show published modules
+        let now = new Date();
+        let filteredModules = results.filter((module)=>{
+          let availableFrom = new Date(module.availableFrom);
+          let availableTo = new Date(module.availableTo);
+          if (availableFrom < now && now < availableTo) {
+            return true;
+          }
+        })
+
         res.render('index', {
-          modules: results
+          modules: filteredModules
         })
       })
       .catch(err=>console.log(err))
