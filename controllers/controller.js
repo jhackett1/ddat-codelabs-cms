@@ -19,8 +19,7 @@ let controller = {
       order: ['number']
     })
       .then((results)=>{
-
-        // Only show published modules
+        // Only show currently available modules
         let now = new Date();
         let filteredModules = results.filter((module)=>{
           let availableFrom = new Date(module.availableFrom);
@@ -29,14 +28,12 @@ let controller = {
             return true;
           }
         })
-
         res.render('index', {
           modules: filteredModules
         })
       })
       .catch(err=>console.log(err))
   },
-
 
   getModuleDetail: (req, res)=>{
     Module.findOne({

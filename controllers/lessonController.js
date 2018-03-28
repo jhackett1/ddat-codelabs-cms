@@ -60,17 +60,8 @@ let controller = {
   },
 
   postEditLesson: (req, res)=>{
-
-    console.log("\n\n\n", req.body.externalLinks, "\n\n\n");
-
-    for (var i = 0; i < req.body.externalLinks.length; i++) {
-      console.log(typeof(req.body.externalLinks[i]))
-    }
-
+    // Remove empty external links from list
     let filteredExternalLinks = req.body.externalLinks.filter(Boolean)
-
-    console.log(filteredExternalLinks)
-
     // Process user-supplied form data
     let updatedLesson = {
       title: req.body.title,
@@ -81,9 +72,6 @@ let controller = {
       moduleId: req.body.moduleId,
       externalLinks: filteredExternalLinks
     }
-
-
-
     Lesson.findById(req.params.lessonId)
       .then((result)=>{
         result.updateAttributes(updatedLesson)

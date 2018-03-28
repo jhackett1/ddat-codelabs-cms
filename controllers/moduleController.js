@@ -19,9 +19,8 @@ let controller = {
     // Wait for both promises to resolve
     Promise.all([modules, pages, feedbacks, lessons])
       .then(function(results){
-
+        // Display modules in their order
         let sortedModules = arraySort(results[0], ['number'])
-
         let sortedPages = results[1].sort((a, b)=>{
           return a.title > b.title
         })
