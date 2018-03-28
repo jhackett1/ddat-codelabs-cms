@@ -16,13 +16,13 @@
   <div class="grid-row">
 
     <div class="column-two-thirds">
-      <h1 class="heading-large"><%= lesson.number %>. <%= lesson.title %></h1>
+      <h1 class="heading-xlarge"><%= lesson.number %>. <%= lesson.title %></h1>
       <div class="lesson-content">
         <%- lesson.content %>
       </div>
 
       <% if (lesson.externalLinks.length > 0) { %>
-        <h2 class="heading-medium">Additional resources</h2>
+        <h2 class="heading-medium">More resources</h2>
         <ul class="list list-bullet">
         <% for (var i = 0; i < lesson.externalLinks.length; i++) { %>
           <li><%= lesson.externalLinks[i] %></li>

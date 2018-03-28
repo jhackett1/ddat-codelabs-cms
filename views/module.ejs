@@ -16,9 +16,15 @@
       <h1 class="heading-xlarge"><%= module.title %></h1>
       <p class="lede"><%= module.description %></p>
 
+      <h2 class="heading-large">Lessons in this module</h2>
       <ol class="list">
-        <% for (var i = 0; i < module.lessons.length; i++) { %>
-          <li><%= module.lessons[i].number %>. <a href="/module/<%= module.number %>/lesson/<%= module.lessons[i].number %>"><%= module.lessons[i].title %></a></li>
+        <%
+          let sortedLessons = module.lessons.sort((a,b)=>{
+            return a.number>b.number;
+          })
+        %>
+        <% for (var i = 0; i < sortedLessons.length; i++) { %>
+          <li><%= sortedLessons[i].number %>. <a href="/module/<%= module.number %>/lesson/<%= module.lessons[i].number %>"><%= module.lessons[i].title %></a></li>
         <% } %>
       </ol>
 
