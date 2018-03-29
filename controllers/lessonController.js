@@ -60,6 +60,8 @@ let controller = {
   },
 
   postEditLesson: (req, res)=>{
+
+
     // Remove empty external links from list
     let filteredExternalLinks = req.body.externalLinks.filter(Boolean)
     // Process user-supplied form data
@@ -75,7 +77,7 @@ let controller = {
     Lesson.findById(req.params.lessonId)
       .then((result)=>{
         result.updateAttributes(updatedLesson)
-          .then(lesson => res.status(200).redirect('/admin'))
+          .then(lesson => res.status(200).redirect('back'))
           .catch(error => res.status(401).send(error));
       })
       .catch(err => console.log(err))

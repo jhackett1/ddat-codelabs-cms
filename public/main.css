@@ -2329,6 +2329,8 @@ form {
   font-size: 32px;
   line-height: 1.09375;
   font-weight: 700;
+  margin-top: 0.46875em;
+  margin-bottom: 0.9375em;
 }
 
 @media (min-width: 641px) {
@@ -2347,6 +2349,8 @@ form {
   font-size: 24px;
   line-height: 1.04167;
   font-weight: 700;
+  margin-top: 1.04167em;
+  margin-bottom: 0.41667em;
 }
 
 @media (min-width: 641px) {
@@ -2365,6 +2369,8 @@ form {
   font-size: 20px;
   line-height: 1.11111;
   font-weight: 700;
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
 }
 
 @media (min-width: 641px) {
@@ -2383,6 +2389,8 @@ form {
   font-size: 18px;
   line-height: 1.2;
   font-weight: 700;
+  margin-top: 0.625em;
+  margin-bottom: 0.3125em;
 }
 
 @media (min-width: 641px) {
@@ -2401,6 +2409,8 @@ form {
   font-size: 16px;
   line-height: 1.25;
   font-weight: 700;
+  margin-top: 0.625em;
+  margin-bottom: 0.3125em;
 }
 
 @media (min-width: 641px) {
@@ -2411,6 +2421,11 @@ form {
   }
 }
 
+.lesson-content pre,
+.page-content pre {
+  margin-bottom: 1em;
+}
+
 .lesson-content blockquote,
 .page-content blockquote {
   border-left-style: solid;
@@ -2419,6 +2434,6 @@ form {
   padding: 0.78947em;
 }
 
-#global-header #logo{
-  background: none
+#global-header #logo {
+  background: none;
 }

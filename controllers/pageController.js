@@ -76,7 +76,7 @@ let controller = {
     Page.findById(req.params.pageId)
       .then((result)=>{
         result.updateAttributes(updatedPage)
-          .then(page => res.status(200).redirect('/admin'))
+          .then(page => res.status(200).redirect('back'))
           .catch(error => console.log(error));
       })
       .catch(err => console.log(err))

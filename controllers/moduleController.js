@@ -91,7 +91,7 @@ let controller = {
     Module.findOne({where: {number: req.params.moduleNumber}})
       .then((result)=>{
         result.updateAttributes(updatedModule)
-          .then(module => res.status(200).redirect('/admin'))
+          .then(module => res.status(200).redirect('back'))
           .catch(error => res.status(401).send(error));
       })
       .catch(err => console.log(err))
