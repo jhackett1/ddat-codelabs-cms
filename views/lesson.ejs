@@ -35,11 +35,14 @@
           })
         %>
         <% for (var i = 0; i < sortedLessons.length; i++) { %>
+          <li>
           <% if (sortedLessons[i].number === lesson.number) { %>
-            <li><%= sortedLessons[i].number %>. <%= sortedLessons[i].title %></li>
+            <%= sortedLessons[i].number %>. <%= sortedLessons[i].title %>
           <% } else { %>
-            <li><a href="/module/<%= module.number %>/lesson/<%= sortedLessons[i].number %>"><%= sortedLessons[i].number %>. <%= sortedLessons[i].title %></a></li>
+            <a href="/module/<%= module.number %>/lesson/<%= sortedLessons[i].number %>"><%= sortedLessons[i].number %>. <%= sortedLessons[i].title %></a>
           <% } %>
+            <% if (sortedLessons[i].lessonType === 'Project task') { %> <strong class="phase-tag project-tag">PROJECT</strong><% } %>
+            </li>
         <% } %>
       </ol>
     </div>

@@ -2444,8 +2444,17 @@ form {
 }
 
 .lesson-content img,
-.page-content img {
+.lesson-content iframe,
+.page-content img,
+.page-content iframe {
   max-width: 100%;
+  height: auto;
+}
+
+strong.project-tag {
+  margin-left: 7px;
+  background: #dee0e2;
+  color: rgba(11, 12, 12, 0.4);
 }
 
 #global-header #logo {
