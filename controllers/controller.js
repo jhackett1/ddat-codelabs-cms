@@ -70,6 +70,9 @@ let controller = {
           })
           let lesson = lessons[0];
           lesson.content = md.render(lesson.content);
+
+          console.log(result)
+
           res.render('lesson', {
             lesson: lesson,
             module: result

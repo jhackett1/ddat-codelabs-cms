@@ -13,29 +13,35 @@
     </ol>
   </div>
 
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary"><%= lesson.lessonType %></span>
+    <%= lesson.number %>. <%= lesson.title %>
+  </h1>
+
   <div class="grid-row">
 
     <div class="column-two-thirds">
-      <h1 class="heading-xlarge"><%= lesson.number %>. <%= lesson.title %></h1>
       <div class="lesson-content">
         <%- lesson.content %>
       </div>
-
-      <% if (lesson.externalLinks.length > 0) { %>
-        <h2 class="heading-medium">More resources</h2>
-        <ul class="list list-bullet">
-        <% for (var i = 0; i < lesson.externalLinks.length; i++) { %>
-          <li><%= lesson.externalLinks[i] %></li>
-        <% } %>
-        </ul>
-      <% } %>
-
-
-
-
     </div>
 
     <div class="column-one-third">
+      <strong class="bold">Lessons in this module:</strong>
+      <ol class="list list-numbered">
+        <%
+          let sortedLessons = module.lessons.sort((a,b)=>{
+            return a.number>b.number;
+          })
+        %>
+        <% for (var i = 0; i < sortedLessons.length; i++) { %>
+          <% if (sortedLessons[i].number === lesson.number) { %>
+            <li><%= sortedLessons[i].number %>. <%= sortedLessons[i].title %></li>
+          <% } else { %>
+            <li><a href="/module/<%= module.number %>/lesson/<%= sortedLessons[i].number %>"><%= sortedLessons[i].number %>. <%= sortedLessons[i].title %></a></li>
+          <% } %>
+        <% } %>
+      </ol>
     </div>
 
   </div>

@@ -71,8 +71,8 @@
               <p class="form-label">Lesson type</p>
             </legend>
             <div class="multiple-choice">
-              <input id="lessonType-1" type="radio" name="lessonType" value="Standard" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Standard"){ %> checked <% } } %>>
-              <label for="lessonType-1">Standard</label>
+              <input id="lessonType-1" type="radio" name="lessonType" value="Learn" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Learn"){ %> checked <% } } %>>
+              <label for="lessonType-1">Learn</label>
             </div>
             <div class="multiple-choice">
               <input id="lessonType-2" type="radio" name="lessonType" value="Video" required <% if(mode === "edit" && typeof lesson !== 'undefined'){ if(lesson.lessonType === "Video"){ %> checked <% } } %>>
@@ -111,17 +111,6 @@
             Content
           </label>
           <textarea class="form-control" name="content" rows="10"><% if(mode === "edit" && typeof lesson !== 'undefined'){ %><%- lesson.content %><% } %></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="externalLinks">External links</label>
-          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[0] %>" <% } %>>
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[1] %>" <% } %>>
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="externalLinks" name="externalLinks" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="<%- lesson.externalLinks[2] %>" <% } %>>
         </div>
 
         <div class="form-group inline">

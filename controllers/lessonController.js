@@ -22,8 +22,7 @@ let controller = {
       content: req.body.content,
       lessonType: req.body.lessonType,
       difficulty: req.body.difficulty,
-      moduleId: req.body.moduleId,
-      externalLinks: req.body.externalLinks
+      moduleId: req.body.moduleId
     }
     // Save new module to DB
     Lesson.create(newLesson)
@@ -60,10 +59,6 @@ let controller = {
   },
 
   postEditLesson: (req, res)=>{
-
-
-    // Remove empty external links from list
-    let filteredExternalLinks = req.body.externalLinks.filter(Boolean)
     // Process user-supplied form data
     let updatedLesson = {
       title: req.body.title,
@@ -71,8 +66,7 @@ let controller = {
       difficulty: req.body.difficulty,
       lessonType: req.body.lessonType,
       content: req.body.content,
-      moduleId: req.body.moduleId,
-      externalLinks: filteredExternalLinks
+      moduleId: req.body.moduleId
     }
     Lesson.findById(req.params.lessonId)
       .then((result)=>{

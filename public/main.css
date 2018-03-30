@@ -2235,6 +2235,10 @@ input[type=number] {
   }
 }
 
+#global-header-bar {
+  background-color: #005abb;
+}
+
 .grid-row .column-third {
   padding: 0 15px;
   -webkit-box-sizing: border-box;
@@ -2297,6 +2301,11 @@ form {
 
 .form-group.inline input.button {
   display: inline-block;
+}
+
+.lesson-content,
+.page-content {
+  margin-bottom: 30px;
 }
 
 .lesson-content strong,
@@ -2432,6 +2441,11 @@ form {
   border-left-width: 10px;
   border-color: #bfc1c3;
   padding: 0.78947em;
+}
+
+.lesson-content img,
+.page-content img {
+  max-width: 100%;
 }
 
 #global-header #logo {
