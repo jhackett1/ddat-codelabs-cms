@@ -42,6 +42,7 @@
               <a href="/module/<%= module.number %>/lesson/<%= sortedLessons[i].number %>"><%= sortedLessons[i].number %>. <%= sortedLessons[i].title %></a>
             <% } %>
             <% if (sortedLessons[i].lessonType === 'Project task') { %> <strong class="phase-tag project-tag">PROJECT</strong><% } %>
+            <% if (sortedLessons[i].lessonType === 'Video') { %> <strong class="phase-tag video-tag">VIDEO</strong><% } %>     
           </li>
         <% } %>
       </ol>
