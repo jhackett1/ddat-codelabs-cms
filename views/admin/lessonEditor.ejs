@@ -135,8 +135,41 @@
 <script src="<%= govukTemplateAssetPath %>simplemde.min.js"></script>
 <script>
 var simplemde = new SimpleMDE({
-	toolbar: ["bold", "italic", "heading", "|", "code", "quote", "|", "unordered-list", "ordered-list", "|", "link", "image", "horizontal-rule", "|", "fullscreen", "guide"],
+	toolbar: [
+    "bold",
+    "italic",
+    "heading",
+    "|",
+    "code",
+    "quote",
+    "|",
+    "unordered-list",
+    "ordered-list",
+    "|",
+    "link",
+    "image",
+    "horizontal-rule",
+    {
+      name: "redText",
+      action: drawTodo,
+      className: "fa fa-check-square", // Look for a suitable icon
+      title: "Todo box"
+    },
+    "|",
+    "fullscreen",
+    "guide"
+  ],
 });
+
+function drawTodo(editor) {
+    var cm = editor.codemirror;
+    var output = '';
+    var selectedText = cm.getSelection();
+    var text = selectedText || '';
+    output = '<div class="todo">' + text + '</div>';
+    cm.replaceSelection(output);
+}
+
 </script>
 
 <%- include('../footer.ejs') %>
