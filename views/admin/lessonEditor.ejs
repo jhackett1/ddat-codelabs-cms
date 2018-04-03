@@ -124,6 +124,7 @@
             <input class="button button-danger" type="submit" value="Delete lesson">
           </div>
         </form>
+        <a class="block" href="/module/<%- thisModule.number %>/lesson/<%- lesson.number %>">View module</a>
       <% } %>
 
 
@@ -150,10 +151,16 @@ var simplemde = new SimpleMDE({
     "image",
     "horizontal-rule",
     {
-      name: "redText",
+      name: "todoPanel",
       action: drawTodo,
       className: "fa fa-check-square", // Look for a suitable icon
-      title: "Todo box"
+      title: "Todo panel"
+    },
+    {
+      name: "inset",
+      action: drawPanel,
+      className: "fa fa-square", // Look for a suitable icon
+      title: "Inset"
     },
     "|",
     "fullscreen",
@@ -167,6 +174,14 @@ function drawTodo(editor) {
     var selectedText = cm.getSelection();
     var text = selectedText || '';
     output = '<div class="todo">' + text + '</div>';
+    cm.replaceSelection(output);
+}
+function drawPanel(editor) {
+    var cm = editor.codemirror;
+    var output = '';
+    var selectedText = cm.getSelection();
+    var text = selectedText || '';
+    output = '<div class="inset">' + text + '</div>';
     cm.replaceSelection(output);
 }
 

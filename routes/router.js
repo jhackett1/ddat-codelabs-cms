@@ -5,6 +5,15 @@ let routes = function(express){
   let pageController = require('../controllers/pageController');
 
   // Middleware
+  router.use(function(req, res, next) {
+    if (req.session.user) {
+      res.locals.loggedIn = true;
+      next()
+    } else {
+      next()
+    }
+  })
+
   // Inject menu data into all routes
   router.use(pageController.getMenu)
 

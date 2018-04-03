@@ -52,7 +52,8 @@ let controller = {
         res.render('admin/lessonEditor', {
           mode: 'edit',
           lesson: lessons[0],
-          modules: results[1]
+          modules: results[1],
+          thisModule: results[0]
         })
       })
       .catch(err => console.log(err))
@@ -70,6 +71,7 @@ let controller = {
     }
     Lesson.findById(req.params.lessonId)
       .then((result)=>{
+        let oldResult = result;
         result.updateAttributes(updatedLesson)
           .then(lesson => res.status(200).redirect('back'))
           .catch(error => res.status(401).send(error));
