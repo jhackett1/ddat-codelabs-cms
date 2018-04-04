@@ -1,12 +1,19 @@
 <%- include('header.ejs') %>
+
+<div class="masthead">
+  <div class="full-page-width-wrapper">
+    <h1 class="heading-xlarge">Learn to code in six months</h1>
+    <p class="lede">DDaT Codelabs are an easy way to practice using the technology involved in building government services.</p>
+    <a class="button button-start" href="#" role="button">Get started</a>
+    <p><a href="/why-this-exists">Read more about why Codelabs exists</a></p>    
+  </div>
+</div>
+
 <main id="content">
 
   <div class="grid-row">
 
     <div class="column-two-thirds">
-      <h1 class="heading-xlarge">Learn to code in six months</h1>
-      <p class="lede">DDaT Codelabs are an easy way to practice using the technology involved in building government services.</p>
-      <p><a href="/why-this-exists">Read more about why Codelabs exists</a></p>
       <h2 class="heading-large">All modules</h2>
       <p>A new module is released at the start of each month.</p>
       <div class="panel panel-border-wide">
@@ -31,7 +38,7 @@
                   <li>
                     <%= sortedLessons[i].number %>. <a href="/module/<%= module.number %>/lesson/<%= module.lessons[i].number %>"><%= module.lessons[i].title %></a>
                     <% if (sortedLessons[i].lessonType === 'Project task') { %> <strong class="phase-tag project-tag">PROJECT</strong><% } %>
-                    <% if (sortedLessons[i].lessonType === 'Video') { %> <strong class="phase-tag video-tag">VIDEO</strong><% } %>                    
+                    <% if (sortedLessons[i].lessonType === 'Video') { %> <strong class="phase-tag video-tag">VIDEO</strong><% } %>
                   </li>
                 <% } %>
               </ol>

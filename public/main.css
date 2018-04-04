@@ -2492,3 +2492,29 @@ strong.video-tag {
 a.block {
   display: block;
 }
+
+.masthead{
+  padding: 20px 0px 20px 0px;
+  background-color: #005ea5;
+  color: #ffffff;
+}
+
+@media screen and (min-width: 641px){
+  .masthead .heading-xlarge{
+    margin: 20px 0px;
+  }
+}
+
+.masthead .button-start{
+  background-color: #ffffff;
+  color: #005ea5;
+  background-image: url(/images/arrow.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  margin-bottom: 5px;
+}
+
+.masthead a{
+  color: #ffffff;
+}
