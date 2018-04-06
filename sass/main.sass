@@ -48,9 +48,11 @@ form
   display: inline-block
   input.button
     display: inline-block
+    
+a.block
+  display: block
 
-
-
+// Lesson content styling
 .lesson-content, .page-content
   margin-bottom: 30px
   strong
@@ -99,11 +101,11 @@ form
     margin-bottom: 1.05263em
     p:last-of-type
       margin-bottom: 0px
-
   img, iframe
     max-width: 100%
     height: auto
 
+// Custom lesson type labels
 strong.project-tag
   margin-left: 7px
   background: #28A197
@@ -113,9 +115,11 @@ strong.video-tag
   background: #DF3034
   color: #ffffff
 
+// Hide crown
 #global-header #logo
   background: none
 
+// Inset text panels
 .todo
   background-color: #28a096
   color: #ffffff
@@ -128,6 +132,22 @@ strong.video-tag
   margin-top: 0.26316em
   margin-bottom: 1.05263em
 
+// Masthead
+.masthead
+  padding: 20px 0px 20px 0px
+  background-color: #005ea5
+  color: #ffffff
+  .button-start
+    background-color: #ffffff
+    color: #005ea5
+    background-image: url(/images/arrow.png)
+    background-size: 20px
+    background-repeat: no-repeat
+    background-position: 95% 50%
+    margin-bottom: 5px
+  a
+    color: #ffffff
 
-a.block
-  display: block
+@media screen and (min-width: 641px)
+  .masthead .heading-xlarge
+    margin: 20px 0px
