@@ -51,6 +51,26 @@ let controller = {
       .catch(err => res.status(401).send(err))
   },
 
+  getModuleEval: (req, res)=>{
+    res.render('evaluation', {
+      moduleNumber: req.params.moduleNumber
+    })
+  },
+
+  postModuleEval: (req, res)=>{
+    let newEvaluation = {
+      moduleNumber: req.params.moduleNumber,
+      experience: req.body.experience,
+      learned: req.body.learned,
+      message: req.body.message
+    }
+
+    // TODO: Store evaluation form
+
+    res.status(502).send("Not implemented")
+
+  },
+
   getLessonDetail: (req, res)=>{
 
       Module.findOne({

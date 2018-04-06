@@ -20,14 +20,14 @@
       <ol class="list">
         <%
           let sortedLessons = module.lessons.sort((a,b)=>{
-            return a.number>b.number;
+            return a.number-b.number;
           })
         %>
         <% for (var i = 0; i < sortedLessons.length; i++) { %>
           <li>
             <%= sortedLessons[i].number %>. <a href="/module/<%= module.number %>/lesson/<%= module.lessons[i].number %>"><%= module.lessons[i].title %></a>
             <% if (sortedLessons[i].lessonType === 'Project task') { %> <strong class="phase-tag project-tag">PROJECT</strong><% } %>
-            <% if (sortedLessons[i].lessonType === 'Video') { %> <strong class="phase-tag video-tag">VIDEO</strong><% } %>     
+            <% if (sortedLessons[i].lessonType === 'Video') { %> <strong class="phase-tag video-tag">VIDEO</strong><% } %>
           </li>
         <% } %>
       </ol>

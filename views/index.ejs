@@ -5,7 +5,7 @@
     <h1 class="heading-xlarge">Learn to code in six months</h1>
     <p class="lede">DDaT Codelabs are an easy way to practice using the technology involved in building government services.</p>
     <a class="button button-start" href="#" role="button">Get started</a>
-    <p><a href="/why-this-exists">Read more about why Codelabs exists</a></p>    
+    <p><a href="/why-this-exists">Read more about why Codelabs exists</a></p>
   </div>
 </div>
 
@@ -31,7 +31,7 @@
               <ol class="list">
                 <%
                   let sortedLessons = module.lessons.sort((a,b)=>{
-                    return a.number>b.number;
+                    return a.number-b.number;
                   })
                 %>
                 <% for (var i = 0; i < sortedLessons.length; i++) { %>

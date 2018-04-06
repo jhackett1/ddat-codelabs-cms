@@ -25,6 +25,11 @@ let routes = function(express){
   router.route('/module/:moduleNumber')
     .get(controller.getModuleDetail)
 
+  // Module evaluation
+  // router.route('/module/:moduleNumber/evaluate')
+  //   .get(controller.getModuleEval)
+  //   .post(controller.postModuleEval)
+
   // Lesson detail view
   router.route('/module/:moduleNumber/lesson/:lessonNumber')
     .get(controller.getLessonDetail)
