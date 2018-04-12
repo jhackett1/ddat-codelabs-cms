@@ -3,16 +3,17 @@ let routes = function(express){
   let moduleController = require('../controllers/moduleController');
   let pageController = require('../controllers/pageController');
   let lessonController = require('../controllers/lessonController');
+  let feedbackController = require('../controllers/feedbackController');
 
   // Auth middleware
-  router.use(function(req, res, next) {
-    if (req.session.user) {
-      res.locals.loggedIn = true;
-      next()
-    } else {
-      res.redirect('/login')
-    }
-  })
+  // router.use(function(req, res, next) {
+  //   if (req.session.user) {
+  //     res.locals.loggedIn = true;
+  //     next()
+  //   } else {
+  //     res.redirect('/login')
+  //   }
+  // })
 
   // Inject menu data into all routes
   router.use(pageController.getMenu)
@@ -51,6 +52,10 @@ let routes = function(express){
     .post(pageController.postEditPage)
   router.route('/page/:pageId/delete')
     .post(pageController.deleteEditPage)
+
+// Download feedback CSV
+router.route('/feedback/download')
+  .get(feedbackController.downloadCsv)
 
   return router;
 }

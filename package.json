@@ -20,6 +20,7 @@
     "govuk-elements-sass": "^3.1.2",
     "govuk_frontend_toolkit": "^7.4.2",
     "govuk_template_ejs": "^0.23.0",
+    "json-2-csv": "^2.2.0",
     "markdown-it": "^8.4.1",
     "morgan": "^1.9.0",
     "pg": "^7.4.1",
