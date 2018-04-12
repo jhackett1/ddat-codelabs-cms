@@ -7,14 +7,25 @@
       <li class="">
           <a href="/">DDaT Codelabs</a>
       </li>
-      <li class="">Feedback</li>
+      <% if (moduleNumber === "All") { %>
+        <li class="">Feedback</li>
+      <% } else { %>
+        <li class="">Module feedback</li>
+      <% } %>
     </ol>
   </div>
 
   <div class="grid-row">
 
     <div class="column-two-thirds">
-      <h1 class="heading-xlarge">Give feedback</h1>
+
+      <% if (moduleNumber === "All") { %>
+        <h1 class="heading-xlarge">Give feedback</h1>
+      <% } else { %>
+        <h1 class="heading-xlarge">Give feedback on a module</h1>
+      <% } %>
+
+
 
       <form action="/feedback" method="POST">
         <div class="form-group">
@@ -41,17 +52,24 @@
 
         <div class="form-group">
           <label class="form-label" for="message">
-            <h1 class="heading-medium">
-              How can we improve DDaT Codelabs?
-            </h1>
+            <% if (moduleNumber === "All") { %>
+              <h2 class="heading-medium">
+                How can we improve DDaT Codelabs?
+              </h2>
+            <% } else { %>
+              <h2 class="heading-medium">
+                How can we improve this module?
+              </h2>
+            <% } %>
           </label>
           <textarea class="form-control form-control-3-4" name="message" id="message" rows="5" required></textarea>
         </div>
 
+        <input type="hidden" name="moduleNumber" value="<%= moduleNumber %>"/>
+
         <div class="form-group">
           <input class="button" type="submit" value="Send feedback">
         </div>
-
       </form>
 
       <p>You can discuss DDaT Codelabs on channel <em>#ddat-codelabs</em> on the cross-government digital Slack team.</p>

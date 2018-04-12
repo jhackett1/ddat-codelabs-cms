@@ -38,6 +38,8 @@ let routes = function(express){
   router.route('/feedback')
     .get(controller.getFeedbackForm)
     .post(controller.postFeedbackForm)
+  router.route('/feedback/:moduleNumber')
+    .get(controller.getFeedbackForm)
 
   // Login form
   router.route('/login')

@@ -102,7 +102,16 @@ let controller = {
   },
 
   getFeedbackForm: (req, res)=>{
-    res.render('feedback')
+    // If the user has gone to the route for a particular module, pass in the module number
+    if (req.params.moduleNumber) {
+      res.render('feedback', {
+        moduleNumber: req.params.moduleNumber
+      })
+    } else {
+      res.render('feedback', {
+        moduleNumber: "All"
+      })
+    }
   },
 
   postFeedbackForm: (req, res)=>{
