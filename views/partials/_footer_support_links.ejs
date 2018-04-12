@@ -1,10 +1,12 @@
 <ul>
   <li><a href="/feedback">Feedback</a></li>
   <% if(typeof loggedIn !== 'undefined' && loggedIn){ %>
+    <li><a href="/admin">Dashboard</a></li>
     <li><a href="/logout">Log out</a></li>
   <% } else { %>
     <li><a href="/login">Administrator login</a></li>
   <% } %>
+
   <li>Built and maintained by DDaT Fast Streamers</a>
 </li>
 </ul>

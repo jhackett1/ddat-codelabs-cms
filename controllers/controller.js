@@ -116,6 +116,7 @@ let controller = {
 
   postFeedbackForm: (req, res)=>{
     let newFeedback = {
+      moduleNumber: req.body.moduleNumber,
       experience: req.body.experience,
       message: req.body.message
     }

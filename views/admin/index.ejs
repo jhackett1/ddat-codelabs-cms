@@ -85,6 +85,7 @@
   <table class="list">
     <thead>
       <tr>
+        <th scope="col">Module</th>
         <th scope="col">Experience</th>
         <th scope="col">Message</th>
       </tr>
@@ -92,7 +93,8 @@
     <tbody>
       <% feedbackList.forEach(function(feedback){ %>
         <tr>
-          <th scope="row"><%= feedback.experience %></th>
+          <th scope="row"><%= feedback.moduleNumber %></th>
+          <th><%= feedback.experience %></th>
           <td><%= feedback.message %></td>
         </tr>
       <% }); %>
