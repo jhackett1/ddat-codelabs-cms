@@ -6,14 +6,14 @@ let routes = function(express){
   let feedbackController = require('../controllers/feedbackController');
 
   // Auth middleware
-  // router.use(function(req, res, next) {
-  //   if (req.session.user) {
-  //     res.locals.loggedIn = true;
-  //     next()
-  //   } else {
-  //     res.redirect('/login')
-  //   }
-  // })
+  router.use(function(req, res, next) {
+    if (req.session.user) {
+      res.locals.loggedIn = true;
+      next()
+    } else {
+      res.redirect('/login')
+    }
+  })
 
   // Inject menu data into all routes
   router.use(pageController.getMenu)
