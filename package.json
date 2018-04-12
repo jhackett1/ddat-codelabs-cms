@@ -24,6 +24,7 @@
     "markdown-it": "^8.4.1",
     "morgan": "^1.9.0",
     "pg": "^7.4.1",
+    "raven": "^2.5.0",
     "sequelize": "^4.35.2",
     "sequelize-cli": "^4.0.0",
     "simplemde": "^1.11.2",

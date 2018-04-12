@@ -4,8 +4,14 @@ const path = require('path');
 const logger = require('morgan');
 const session = require('express-session');
 
+
 // Initialise express
 const app = express();
+
+// Set up Sentry
+var Raven = require('raven');
+Raven.config(process.env.SENTRY_DSN).install();
+app.use(Raven.requestHandler());
 
 // Set app local variables
 app.locals.htmlLang = false,
