@@ -29,3 +29,8 @@ Admin users
 -----------
 
 Administrators can log in at `/login` to edit content, but there is deliberately no way to create new admin users within the app. This must be done seperately.
+
+Media uploads
+------------
+
+The app makes use of Cloudinary to handle image uploading and file storage. Environment variables must be set for `CLOUDINARY_NAME` and `CLOUDINARY_PRESET` for this to work correctly. Cloudinary is available as a free add-on via Heroku, and must be configured to accept unsigned uploads.

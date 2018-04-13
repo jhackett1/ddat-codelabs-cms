@@ -197,7 +197,7 @@
       cm.replaceSelection(output);
   }
   function openMediaUploader(editor){
-    cloudinary.openUploadWidget({ cloud_name: 'hbff4fsfk', upload_preset: 'wtt4jy5c'}, function(error, result) {
+    cloudinary.openUploadWidget({ cloud_name: '<%= process.env.CLOUDINARY_NAME %>', upload_preset: '<%= process.env.CLOUDINARY_PRESET %>'}, function(error, result) {
       console.log(error, result)
       // Print the URLs of successfully uploaded images to the page
       for (var i = 0; i < result.length; i++) {
