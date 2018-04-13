@@ -2518,3 +2518,27 @@ a.block {
 .masthead a{
   color: #ffffff;
 }
+
+span.difficulty{
+  background-color: rgba(40, 161, 151, 1);
+  font-size: 0.7em;
+  border-radius: 100%;
+  color: white;
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-3px);
+}
+
+ul#recent-uploads.alive{
+  margin-bottom: 30px;
+}
+ul#recent-uploads.alive:before{
+  content: "Recent media uploads";
+  margin-bottom: 10px;
+}
+ul#recent-uploads li{
+  opacity: 0.5;
+}

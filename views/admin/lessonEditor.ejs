@@ -113,6 +113,8 @@
           <textarea class="form-control" name="content" rows="10"><% if(mode === "edit" && typeof lesson !== 'undefined'){ %><%- lesson.content %><% } %></textarea>
         </div>
 
+        <ul id="recent-uploads"></ul>
+
         <div class="form-group inline">
           <input class="button" type="submit" <% if(mode === "edit" && typeof lesson !== 'undefined'){ %> value="Update" <% } else { %> value="Publish" <% } %>>
         </div>
@@ -134,57 +136,86 @@
 </main>
 
 <script src="<%= govukTemplateAssetPath %>simplemde.min.js"></script>
+<script src="http://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <script>
-var simplemde = new SimpleMDE({
-	toolbar: [
-    "bold",
-    "italic",
-    "heading",
-    "|",
-    "code",
-    "quote",
-    "|",
-    "unordered-list",
-    "ordered-list",
-    "|",
-    "link",
-    "image",
-    "horizontal-rule",
-    {
-      name: "todoPanel",
-      action: drawTodo,
-      className: "fa fa-check-square", // Look for a suitable icon
-      title: "Todo panel"
-    },
-    {
-      name: "inset",
-      action: drawPanel,
-      className: "fa fa-square", // Look for a suitable icon
-      title: "Inset"
-    },
-    "|",
-    "fullscreen",
-    "guide"
-  ],
-});
+  var simplemde = new SimpleMDE({
+  	toolbar: [
+      "bold",
+      "italic",
+      "heading",
+      "|",
+      "code",
+      "quote",
+      "|",
+      "unordered-list",
+      "ordered-list",
+      "|",
+      "link",
+      "horizontal-rule",
+      {
+        name: "todoPanel",
+        action: drawTodo,
+        className: "fa fa-check-square", // Look for a suitable icon
+        title: "Todo panel"
+      },
+      {
+        name: "inset",
+        action: drawPanel,
+        className: "fa fa-square", // Look for a suitable icon
+        title: "Inset"
+      },
+      "|",
+      "fullscreen",
+      "guide",
+      "|",
+      "image",
+      {
+        name: "upload-image",
+        action: openMediaUploader,
+        className: "fa fa-upload", // Look for a suitable icon
+        title: "Upload image"
+      },
+    ],
+  });
 
-function drawTodo(editor) {
-    var cm = editor.codemirror;
-    var output = '';
-    var selectedText = cm.getSelection();
-    var text = selectedText || '';
-    output = '<div class="todo">' + text + '</div>';
-    cm.replaceSelection(output);
-}
-function drawPanel(editor) {
-    var cm = editor.codemirror;
-    var output = '';
-    var selectedText = cm.getSelection();
-    var text = selectedText || '';
-    output = '<div class="inset">' + text + '</div>';
-    cm.replaceSelection(output);
-}
+  var recentMedia = document.getElementById('recent-uploads');
 
+  function drawTodo(editor) {
+      var cm = editor.codemirror;
+      var output = '';
+      var selectedText = cm.getSelection();
+      var text = selectedText || '';
+      output = '<div class="todo">' + text + '</div>';
+      cm.replaceSelection(output);
+  }
+  function drawPanel(editor) {
+      var cm = editor.codemirror;
+      var output = '';
+      var selectedText = cm.getSelection();
+      var text = selectedText || '';
+      output = '<div class="inset">' + text + '</div>';
+      cm.replaceSelection(output);
+  }
+  function openMediaUploader(editor){
+    cloudinary.openUploadWidget({ cloud_name: 'hbff4fsfk', upload_preset: 'wtt4jy5c'}, function(error, result) {
+      console.log(error, result)
+      // Print the URLs of successfully uploaded images to the page
+      for (var i = 0; i < result.length; i++) {
+        console.log(result[0]);
+        recentMedia.classList.add('alive')
+        recentMedia.innerHTML += "<li>" + result[0].url + "</li>";
+      }
+      // If a single file was uploaded, help the user by inserting it
+      if (result.length < 2) {
+        var cm = editor.codemirror;
+        var output = '';
+        var selectedText = cm.getSelection();
+        var text = selectedText || '';
+        output = '![' + text + '](' + result[0].url + ')';
+        cm.replaceSelection(output);
+      }
+    });
+  }
 </script>
 
 <%- include('../footer.ejs') %>
