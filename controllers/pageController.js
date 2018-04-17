@@ -8,7 +8,7 @@ const Page = require('../models').Page;
 
 let controller = {
 
-  getPage: (req, res)=>{
+  getPage: (req, res, next)=>{
     Page.findOne({where: {slug: req.params.pageSlug}})
       .then((result)=>{
 
@@ -21,7 +21,7 @@ let controller = {
           }
         })
       })
-      .catch(err => res.status(401).send(err))
+      .catch(err => next())
   },
 
   getMenu: (req, res, next)=>{
@@ -55,7 +55,7 @@ let controller = {
       .catch(error => res.status(401).send(error));
   },
 
-  getEditPage: (req, res)=>{
+  getEditPage: (req, res, next)=>{
     Page.findById(req.params.pageId)
       .then((result)=>{
         res.render('admin/pageEditor', {
@@ -63,7 +63,7 @@ let controller = {
           page: result
         })
       })
-      .catch(err => console.log(err))
+      .catch(err => next())
   },
 
   postEditPage: (req, res)=>{

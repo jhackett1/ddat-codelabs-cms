@@ -43,6 +43,12 @@ const router = require('./routes/router')(express);
 app.use('/admin', adminRouter);
 app.use('/', router);
 
+// Error handler
+app.use(function(req, res, next){
+  // TODO: Add some logic here to find database connection errors and split out from 404s
+  res.status(404).render('404')
+})
+
 // Listen
 let port = process.env.PORT || '4000';
 app.set('port', port);

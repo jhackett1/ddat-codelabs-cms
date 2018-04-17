@@ -35,7 +35,7 @@ let controller = {
       .catch(err=>console.log(err))
   },
 
-  getModuleDetail: (req, res)=>{
+  getModuleDetail: (req, res, next)=>{
     Module.findOne({
       include: [{
         model: Lesson,
@@ -48,7 +48,7 @@ let controller = {
           module: result
         })
       })
-      .catch(err => res.status(401).send(err))
+      .catch(err => next())
   },
 
   getModuleEval: (req, res)=>{
@@ -71,7 +71,7 @@ let controller = {
 
   },
 
-  getLessonDetail: (req, res)=>{
+  getLessonDetail: (req, res, next)=>{
 
       Module.findOne({
         include: [{
@@ -91,14 +91,12 @@ let controller = {
           let lesson = lessons[0];
           lesson.content = md.render(lesson.content);
 
-          console.log(result)
-
           res.render('lesson', {
             lesson: lesson,
             module: result
           })
         })
-        .catch(err => console.log(err))
+        .catch(err => next())
   },
 
   getFeedbackForm: (req, res)=>{

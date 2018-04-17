@@ -68,7 +68,7 @@ let controller = {
       .catch(error => res.status(401).send(error));
   },
 
-  getEditModule: (req, res)=>{
+  getEditModule: (req, res, next)=>{
     Module.findOne({where: {number: req.params.moduleNumber}})
       .then((result)=>{
         res.render('admin/moduleEditor', {
@@ -76,7 +76,7 @@ let controller = {
           module: result
         })
       })
-      .catch(err => console.log(err))
+      .catch(err => next())
   },
 
   postEditModule: (req, res)=>{

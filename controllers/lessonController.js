@@ -30,7 +30,7 @@ let controller = {
       .catch(error => console.log(error));
   },
 
-  getEditLesson: (req, res)=>{
+  getEditLesson: (req, res, next)=>{
     let modules = Module.findAll()
     let module = Module.findOne({
       include: [{
@@ -56,7 +56,7 @@ let controller = {
           thisModule: results[0]
         })
       })
-      .catch(err => console.log(err))
+      .catch(err => next())
   },
 
   postEditLesson: (req, res)=>{
