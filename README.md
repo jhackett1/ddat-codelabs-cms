@@ -1,3 +1,5 @@
+**NB: This has been replaced by [a new system](https://github.com/jhackett1/ddat-codelabs-cms/edit/master/README.md)**
+
 DDaT Codelabs
 =============
 
